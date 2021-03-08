@@ -24,12 +24,31 @@ body {
     display: none;
 }
 
-        ul li a {
-            font-family: 'Press Start 2P', cursive;
-            color: var(--secundary-txt-color);
-            line-height: 1.5;
+label {
+    cursor: pointer;
+}
+        label i.fa-gamepad {
+            font-size: 1.5rem;
+            padding-right: 10px;
         }
+#menu:checked ~ ul {
+    display: block;
+}
 
-        ul li a:hover {
-            color: var(--main-txt-color);
+        ul {
+            display: none;
+            margin-top: 1rem;
         }
+            ul li {
+                margin-bottom: 0.6rem;
+            }
+                ul li a {
+                    font-family: 'Press Start 2P', cursive;
+                    color: var(--secundary-txt-color);
+                    line-height: 1.5;
+                }
+           
+                ul li a:hover {
+                    color: var(--main-txt-color);
+                }
+         
