@@ -24,6 +24,18 @@ body {
     display: none;
 }
 
+.green {
+   color: green;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.red {
+    color: red;
+}
+
     h1 {
         text-shadow: 2px 2px #FFC0BE;
         line-height: 1.5;
@@ -88,10 +100,11 @@ body {
         img#magic-ball {
             width: 150px;
             cursor: pointer;
-            border: 2px solid transparent;
+         
+        
             transition: all 500ms ease-in-out;
         }
 
         img#magic-ball:hover {
-            border: 2px solid var(--main-txt-color);
+            transform: rotate(45deg);
         }
