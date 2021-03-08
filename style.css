@@ -46,6 +46,7 @@ body {
                     font-family: 'Press Start 2P', cursive;
                     color: var(--secundary-txt-color);
                     line-height: 1.5;
+                    transition: all 500ms ease-in-out;
                 }
            
                 nav ul li a:hover {
@@ -54,6 +55,8 @@ body {
                 }
     #container {
         margin-top: 40px;
+        padding: 0 10px;
+        line-height: 1.5;
     }
             h2 {
                 color: #FFC0BE;
@@ -71,6 +74,7 @@ body {
                 #jokempo ul li figure img{
                     cursor: pointer;
                     border: 2px solid var(--main-txt-color);
+                    transition: all 500ms ease-in-out;
                 }
 
                 #jokempo ul li figure img:hover {
@@ -79,6 +83,15 @@ body {
 
             #result {
                 margin-top: 30px;
-                line-height: 1.5;
-                padding: 0 10px;
+        
             }
+        img#magic-ball {
+            width: 150px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 500ms ease-in-out;
+        }
+
+        img#magic-ball:hover {
+            border: 2px solid var(--main-txt-color);
+        }
