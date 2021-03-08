@@ -24,29 +24,61 @@ body {
     display: none;
 }
 
-span#menu {
-    cursor: pointer;
-}
-        span i.fa-gamepad {
+    h1 {
+        text-shadow: 2px 2px #FFC0BE;
+        line-height: 1.5;
+    }
+    nav span#menu {
+        cursor: pointer;
+    }
+            nav span i.fa-gamepad {
             font-size: 1.5rem;
             padding-right: 10px;
         }
 
-        ul {
+        nav ul {
             margin-top: 1rem;
         }
-            ul li {
+            nav ul li {
                 margin-bottom: 0.6rem;
             }
-                ul li a {
+                nav ul li a {
                     font-family: 'Press Start 2P', cursive;
                     color: var(--secundary-txt-color);
                     line-height: 1.5;
                 }
            
-                ul li a:hover {
+                nav ul li a:hover {
                     color: var(--main-txt-color);
+    
                 }
-    h2 {
-        color: #FFC0BE;
+    #container {
+        margin-top: 40px;
     }
+            h2 {
+                color: #FFC0BE;
+                margin-bottom: 40px;
+                text-shadow: 2px 2px var(--main-txt-color);
+                line-height: 1.5;
+            }
+        #jokempo ul {
+            display: flex;
+            justify-content: center;
+        }
+            #jokempo ul li figure {
+                margin: 0 5px;
+            }
+                #jokempo ul li figure img{
+                    cursor: pointer;
+                    border: 2px solid var(--main-txt-color);
+                }
+
+                #jokempo ul li figure img:hover {
+                    border: 2px solid var(--secundary-txt-color);
+                }
+
+            #result {
+                margin-top: 30px;
+                line-height: 1.5;
+                padding: 0 10px;
+            }
