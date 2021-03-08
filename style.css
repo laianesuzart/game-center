@@ -1,0 +1,35 @@
+html, body, div, figure, ul, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --bg-color: #000000;
+    --main-txt-color: #FF82A9;
+    --secundary-txt-color: #7F95D1;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--main-txt-color);
+    text-align: center;
+    padding-top: 10px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.hidden {
+    display: none;
+}
+
+        ul li a {
+            font-family: 'Press Start 2P', cursive;
+            color: var(--secundary-txt-color);
+            line-height: 1.5;
+        }
+
+        ul li a:hover {
+            color: var(--main-txt-color);
+        }
