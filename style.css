@@ -24,19 +24,15 @@ body {
     display: none;
 }
 
-label {
+span#menu {
     cursor: pointer;
 }
-        label i.fa-gamepad {
+        span i.fa-gamepad {
             font-size: 1.5rem;
             padding-right: 10px;
         }
-#menu:checked ~ ul {
-    display: block;
-}
 
         ul {
-            display: none;
             margin-top: 1rem;
         }
             ul li {
@@ -51,4 +47,6 @@ label {
                 ul li a:hover {
                     color: var(--main-txt-color);
                 }
-         
+    h2 {
+        color: #FFC0BE;
+    }
