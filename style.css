@@ -108,3 +108,36 @@ body {
         img#magic-ball:hover {
             transform: rotate(45deg);
         }
+
+    div#nickel ul {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+    } 
+        div#nickel ul li {
+            background-color: #FFC0BE;
+            width: 80px;
+            height: 80px;
+            margin: 0 5px;
+            display: flex;
+            justify-content: center;
+        }
+
+    button#start {
+        font-size: 1rem;
+        font-family: 'Press Start 2P', cursive;
+        font-weight: bold;
+        text-shadow: 1px 1px #FFC0BE;
+        background-color: var(--main-txt-color);
+        color: var(--secundary-txt-color);
+        cursor: pointer;
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 2px 2px #FFC0BE;
+    }
+
+    button#start:hover {
+        box-shadow: 2px 2px var(--secundary-txt-color);
+    }
