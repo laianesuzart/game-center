@@ -245,7 +245,8 @@ const randomWords = () => {
     randomWords.push(word1);
     randomWords.push(word2);
     randomWords.push(word3);
-    
+
+    return randomWords;
 }
 
 const randomPosition = () => {
@@ -253,33 +254,80 @@ const randomPosition = () => {
     return position;
 }
 
+const randomPositions = () => {
+    const randomPositions = [];
+
+    let position1;
+    let position2;
+    let position3; 
+
+    do {
+        position1 = randomPosition();
+        position2 = randomPosition();
+        position3 = randomPosition();
+    } while (position1 === position2 || position2 === position3 || position1 === position3)
+
+    randomPositions.push(position1);
+    randomPositions.push(position2);
+    randomPositions.push(position3);
+
+    return randomPositions;
+}
+
+const randomLetters = () => {
+    const alphabet = `abcdefghijklmnopqrstuvwxyz`;
+    const randomLetter = Math.floor(Math.random() * 26);
+
+    return alphabet[randomLetter];
+}
+
 const wordGame = () => {
     const array = [];
+    const selectWords = randomWords();
+    const rowPositions = randomPositions();
+    
+    let word1 = selectWords[0].split(``);
+    let word2 = selectWords[1].split(``);
+    let word3 = selectWords[2].split(``);
+
+   let position1 = rowPositions[0];
+   let position2 = rowPositions[1];
+   let position3 = rowPositions[2];
+
+   for (let i = word1.length; i < 10; i++) {
+       word1[i] = randomLetters();
+   } 
+
+   for (let i = word2.length; i < 10; i++) {
+    word2[i] = randomLetters();
+   }
+
+    for (let i = word3.length; i < 10; i++) {
+        word3[i] = randomLetters();
+    } 
 
     for (let row = 0; row < 10; row++) {
         array[row] = [];
         for (let column = 0; column < 10; column++) {
-            array[row][column] = ``;
+            if (row === position1) {
+                array[row][column] = word1[column];
+            } else if (row === position2) {
+                array[row][column] = word2[column];
+            } else if (row === position3) {
+                array[row][column] = word3[column];
+            } else {
+                array[row][column] = randomLetters();
+            }
+            
         }
     }
 
     
-
+    return array;
  
     
-    const position1 = randomPosition();
-    const position2 = randomPosition();
-    const position3 = randomPosition();
+   
 
-    if (position1 !== position2 && position2 !== position3) {
-        for (let i = position1; i < array.length; i++) {
-            for (let j = 0; j < array.length; i++) {
-                array[position1][j] = (letters1[j]);
-            }
-            console.log(array)
-        }
-       
-    }
     
 }
 
