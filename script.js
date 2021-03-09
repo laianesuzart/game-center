@@ -285,25 +285,49 @@ const wordGame = () => {
     const array = [];
     const selectWords = randomWords();
     const rowPositions = randomPositions();
-    
-    let word1 = selectWords[0].split(``);
-    let word2 = selectWords[1].split(``);
-    let word3 = selectWords[2].split(``);
+    console.log(selectWords)
+    let word1 = [];
+    let word2 = [];
+    let word3 = [];
 
    let position1 = rowPositions[0];
    let position2 = rowPositions[1];
    let position3 = rowPositions[2];
 
-   for (let i = word1.length; i < 10; i++) {
-       word1[i] = randomLetters();
+   let indexY1 = 10 - selectWords[0].length;
+   let indexY2 = 10 - selectWords[1].length;
+   let indexY3 = 10 - selectWords[2].length;
+
+   for (let i = 0; i < 10; i++) {
+       if (i < indexY1) {
+        word1[i] = randomLetters();
+       }
+       else {
+           for (let i = 0; i < selectWords[0].length; i++) {
+            word1.push(selectWords[0][i]);
+           }     
+       }
    } 
 
-   for (let i = word2.length; i < 10; i++) {
-    word2[i] = randomLetters();
-   }
-
-    for (let i = word3.length; i < 10; i++) {
+   for (let i = 0; i < 10; i++) {
+        if (i < indexY2) {
+        word2[i] = randomLetters();
+        }
+        else {
+            for (let i = 0; i < selectWords[1].length; i++) {
+                word2.push(selectWords[1][i]);
+            }   
+        }
+    } 
+    for (let i = 0; i < 10; i++) {
+        if (i < indexY3) {
         word3[i] = randomLetters();
+        }
+        else {
+            for (let i = 0; i < selectWords[2].length; i++) {
+                word3.push(selectWords[2][i]);
+            }   
+        }
     } 
 
     for (let row = 0; row < 10; row++) {
