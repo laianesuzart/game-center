@@ -184,6 +184,8 @@ prize8.src = `./img/unlucky.png`;
 const prizes = {1: prize1, 2: prize2, 3: prize3, 4: prize4, 5: prize5, 6: prize6, 7: prize7, 8: prize8};
 
 startBtn.addEventListener(`click`, () => {
+    startBtn.setAttribute(`disabled`, `disabled`);
+
     img1.innerHTML = ``;
     img2.innerHTML = ``;
     img3.innerHTML = ``;
@@ -214,5 +216,9 @@ startBtn.addEventListener(`click`, () => {
             prize.innerHTML = `Tente novamente, não desista!`;
         }
     }, 1600);
- 
+
+    setTimeout( () => {
+        startBtn.removeAttribute(`disabled`);
+    }, 1650);
+   
 });
