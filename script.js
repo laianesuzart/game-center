@@ -7,13 +7,10 @@ menu.addEventListener(`click`, () => {
     if (clickCount === 0) {
         menuList.classList.remove(`hidden`);
         clickCount++;
-        console.log(clickCount)
     } else {
         menuList.classList.add(`hidden`);
         clickCount--;
-        console.log(clickCount)
     }
-    
     
 })
 
@@ -184,7 +181,7 @@ prize8.src = `./img/unlucky.png`;
 const prizes = {1: prize1, 2: prize2, 3: prize3, 4: prize4, 5: prize5, 6: prize6, 7: prize7, 8: prize8};
 
 startBtn.addEventListener(`click`, () => {
-    startBtn.setAttribute(`disabled`, `disabled`);
+    startBtn.disabled = true;
 
     img1.innerHTML = ``;
     img2.innerHTML = ``;
@@ -218,7 +215,73 @@ startBtn.addEventListener(`click`, () => {
     }, 1600);
 
     setTimeout( () => {
-        startBtn.removeAttribute(`disabled`);
+        startBtn.disabled = false;
     }, 1650);
    
 });
+
+const word = [`gato`, `cachorro`, `laranja`, `futebol`, `chocolate`, `zebra`, `manteiga`, `vermelho`, `rosa`, `margarida`,
+                `borboleta`, `batata`, `abacaxi`, `basquete`, `abacate`, `manga`, `queijo`, `alface`, `tomate`, `pizza`];
+
+const randomWord = () => {
+   const randomWord = Math.floor(Math.random() * 20);
+   return randomWord;
+}
+
+const randomWords = () => {
+    const randomWords = [];
+
+    let word1;
+    let word2;
+    let word3;
+    
+    do {
+        word1 = word[randomWord()];
+        word2 = word[randomWord()];
+        word3 = word[randomWord()];
+
+    } while (word1 === word2 || word2 === word3 || word1 === word3)
+
+    randomWords.push(word1);
+    randomWords.push(word2);
+    randomWords.push(word3);
+    
+}
+
+const randomPosition = () => {
+    const position = Math.floor(Math.random() * 10);
+    return position;
+}
+
+const wordGame = () => {
+    const array = [];
+
+    for (let row = 0; row < 10; row++) {
+        array[row] = [];
+        for (let column = 0; column < 10; column++) {
+            array[row][column] = ``;
+        }
+    }
+
+    
+
+ 
+    
+    const position1 = randomPosition();
+    const position2 = randomPosition();
+    const position3 = randomPosition();
+
+    if (position1 !== position2 && position2 !== position3) {
+        for (let i = position1; i < array.length; i++) {
+            for (let j = 0; j < array.length; i++) {
+                array[position1][j] = (letters1[j]);
+            }
+            console.log(array)
+        }
+       
+    }
+    
+}
+
+
+    
