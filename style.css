@@ -16,7 +16,7 @@ body {
     background-color: var(--bg-color);
     color: var(--main-txt-color);
     text-align: center;
-    padding-top: 10px;
+    padding: 10px 0;
     font-family: 'Press Start 2P', cursive;
 }
 
@@ -147,10 +147,14 @@ body {
         box-shadow: 2px 2px var(--secundary-txt-color);
     }
 
+    p#timer {
+        text-shadow: 1px 1px #FFC0BE;
+    }
+
     div#find-words {
         font-size: 15px;
-        padding: 20px 0;
         cursor: grab;
+        text-transform: uppercase;
     }
 
     div#find-words::selection {

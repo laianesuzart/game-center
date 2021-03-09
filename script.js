@@ -356,9 +356,25 @@ const selectedWords = () => {
 
 const startBtn2 = document.querySelector(`#start2`);
 const findWords = document.querySelector(`#find-words`);
+const timer = document.querySelector(`#timer`);
+
+const time = counter => {
+    if (counter > 0) {
+        setTimeout(() => {
+            counter--;
+            timer.innerHTML = `${counter} segundos`;
+            time(counter);
+        }, 1000);
+    }
+}
 
 startBtn2.addEventListener(`click`, () => {
     const matrix = wordGame();
+    startBtn2.classList.add(`playing`);
+    findWords.classList.remove(`hidden`);
+    timer.classList.remove(`hidden`);
+    timer.innerHTML = `${30} segundos`;
+
 
     findWords.innerHTML = ``;
 
@@ -368,9 +384,23 @@ startBtn2.addEventListener(`click`, () => {
             findWords.innerHTML += `${matrix[row][column]} `;
         }
     }
+
+    setTimeout(() => {
+        startBtn2.classList.remove(`playing`);
+        findWords.classList.add(`hidden`);
+        timer.classList.add(`hidden`);
+    }, 30000);
+
+    if (startBtn2.classList.contains(`playing`)) {
+        time(30);
+       
+        
+            
+        // setInterval( () => {
+        //     const text = selectedWords();
+           
+          
+        
+        // }, 30000);
+    }
 });
-
-
-// do {
-//     const text = selectedWords();
-// } while (timer < 31)
