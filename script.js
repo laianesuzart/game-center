@@ -285,7 +285,7 @@ const wordGame = () => {
     const array = [];
     const selectWords = randomWords();
     const rowPositions = randomPositions();
-    console.log(selectWords)
+   
     let word1 = [];
     let word2 = [];
     let word3 = [];
@@ -319,6 +319,7 @@ const wordGame = () => {
             }   
         }
     } 
+
     for (let i = 0; i < 10; i++) {
         if (i < indexY3) {
         word3[i] = randomLetters();
@@ -345,15 +346,31 @@ const wordGame = () => {
             
         }
     }
-
-    
-    return array;
- 
-    
-   
-
-    
+    return array;    
 }
 
+const selectedWords = () => {
+    const selection = window.getSelection().toString();
+    return selection;
+}
 
-    
+const startBtn2 = document.querySelector(`#start2`);
+const findWords = document.querySelector(`#find-words`);
+
+startBtn2.addEventListener(`click`, () => {
+    const matrix = wordGame();
+
+    findWords.innerHTML = ``;
+
+    for (let row = 0; row < matrix.length; row++) {
+        findWords.innerHTML += `<br>`;
+        for (let column = 0; column < matrix[row].length; column++) {
+            findWords.innerHTML += `${matrix[row][column]} `;
+        }
+    }
+});
+
+
+// do {
+//     const text = selectedWords();
+// } while (timer < 31)

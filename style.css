@@ -20,6 +20,10 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
+::selection {
+    background-color: #FFC0BE;
+}
+
 .hidden {
     display: none;
 }
@@ -123,7 +127,7 @@ body {
             justify-content: center;
         }
 
-    button#start {
+    button#start, button#start2 {
         font-size: 1rem;
         font-family: 'Press Start 2P', cursive;
         font-weight: bold;
@@ -139,6 +143,18 @@ body {
         margin-bottom: 10px;
     }
 
-    button#start:hover {
+    button#start:hover, button#start2:hover  {
         box-shadow: 2px 2px var(--secundary-txt-color);
     }
+
+    div#find-words {
+        font-size: 15px;
+        padding: 20px 0;
+        cursor: grab;
+    }
+
+    div#find-words::selection {
+        color: var(--secundary-txt-color);
+    }
+
+    
