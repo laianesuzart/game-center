@@ -360,6 +360,8 @@ const findWords = document.querySelector(`#find-words`);
 const timer = document.querySelector(`#timer`);
 
 let correctWords = [];
+let rowText = document.createElement(`p`);
+let columnText = document.createElement(`span`);
 
 document.onselectionchange = () => {
     let selection = document.getSelection().toString().replace(/\s/g, ``).toLowerCase();
@@ -368,8 +370,6 @@ document.onselectionchange = () => {
         correctWords.push(selection);
     }
 }
-
-
 
 const time = counter => {
     if (counter > 0) {
@@ -395,14 +395,21 @@ startBtn2.addEventListener(`click`, () => {
     findWords.innerHTML = ``;
 
     for (let row = 0; row < matrix.length; row++) {
-        findWords.innerHTML += `<br>`;
+        let rowText = document.createElement(`p`);
+        findWords.appendChild(rowText);
+
         for (let column = 0; column < matrix[row].length; column++) {
-            findWords.innerHTML += `${matrix[row][column]} `;
+            let columnText = document.createElement(`span`);
+            columnText.innerHTML += `${matrix[row][column]} `;
+            rowText.appendChild(columnText);
         }
     }
 
-   selectedWords();
-
+   
+        const rightAnswers = correctWords;
+    
+    
+    
     setTimeout(() => {
         startBtn2.classList.remove(`playing`);
         findWords.classList.add(`hidden`);

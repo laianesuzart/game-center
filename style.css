@@ -40,6 +40,10 @@ body {
     color: red;
 }
 
+.blue {
+    color: var(--secundary-txt-color);
+}
+
     h1 {
         text-shadow: 2px 2px #FFC0BE;
         line-height: 1.5;
@@ -72,7 +76,6 @@ body {
     #container {
         margin-top: 40px;
         padding: 0 10px;
-        line-height: 1.5;
     }
             h2 {
                 color: #FFC0BE;
@@ -99,13 +102,14 @@ body {
 
             #result {
                 margin-top: 30px;
-        
+                line-height: 1.5;
             }
+        div#magic p {
+            line-height: 1.5;
+        }
         img#magic-ball {
             width: 150px;
             cursor: pointer;
-         
-        
             transition: all 500ms ease-in-out;
         }
 
@@ -141,14 +145,21 @@ body {
         border-radius: 5px;
         box-shadow: 2px 2px #FFC0BE;
         margin-bottom: 10px;
+        line-height: 1.5;
     }
 
     button#start:hover, button#start2:hover  {
         box-shadow: 2px 2px var(--secundary-txt-color);
     }
 
+    p#prize, p#timer {
+        line-height: 1.5;
+    }
+
     p#timer {
         text-shadow: 1px 1px #FFC0BE;
+        font-size: 18px;
+        margin: 20px 0;
     }
 
     div#find-words {
@@ -157,8 +168,6 @@ body {
         text-transform: uppercase;
     }
 
-    div#find-words::selection {
+    div#find-words p span::selection {
         color: var(--secundary-txt-color);
-    }
-
-    
+    } 
