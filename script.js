@@ -358,16 +358,25 @@ const selectedWords = () => {
 const startBtn2 = document.querySelector(`#start2`);
 const findWords = document.querySelector(`#find-words`);
 const timer = document.querySelector(`#timer`);
+const gratz = document.querySelector(`#gratz`);
 
 let correctWords = [];
-let rowText = document.createElement(`p`);
-let columnText = document.createElement(`span`);
+
 
 document.onselectionchange = () => {
     let selection = document.getSelection().toString().replace(/\s/g, ``).toLowerCase();
-    
+    console.log(correctWords)
     if (word.includes(selection)) {
         correctWords.push(selection);
+    }
+    if (correctWords.length === 3) {
+        setTimeout(() => {
+        findWords.classList.add(`hidden`);
+        timer.classList.add(`hidden`);
+        gratz.classList.remove(`hidden`);
+        }, 1000);
+        
+        correctWords = [];
     }
 }
 
@@ -375,7 +384,7 @@ const time = counter => {
     if (counter > 0) {
         setTimeout(() => {
             counter--;
-            timer.innerHTML = `${counter} segundos`;
+            timer.innerHTML = `${counter} segundo(s)`;
             time(counter);
         }, 1000);
     }
@@ -383,10 +392,11 @@ const time = counter => {
 
 startBtn2.addEventListener(`click`, () => {
     const matrix = wordGame();
-    startBtn2.classList.add(`playing`);
     findWords.classList.remove(`hidden`);
     timer.classList.remove(`hidden`);
-    timer.innerHTML = `${30} segundos`;
+    gratz.classList.add(`hidden`);
+    timer.innerHTML = `${30} segundo(s)`;
+    startBtn2.disabled = true;
 
     time(30); 
 
@@ -405,16 +415,10 @@ startBtn2.addEventListener(`click`, () => {
         }
     }
 
-   
-        const rightAnswers = correctWords;
-    
-    
-    
     setTimeout(() => {
-        startBtn2.classList.remove(`playing`);
+        startBtn2.disabled = false;
         findWords.classList.add(`hidden`);
         timer.classList.add(`hidden`);
     }, 30000);
-
   
 });
