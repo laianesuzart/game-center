@@ -18,12 +18,14 @@ const game1 = document.querySelector(`#game1`);
 const game2 = document.querySelector(`#game2`);
 const game3 = document.querySelector(`#game3`);
 const game4 = document.querySelector(`#game4`);
+const game5 = document.querySelector(`#game5`);
 
 const container = document.queryCommandEnabled(`#container`);
 const jokempo = document.querySelector(`#jokempo`);
 const magic = document.querySelector(`#magic`);
 const nickel = document.querySelector(`#nickel`);
 const words = document.querySelector(`#words`);
+const xoxo = document.querySelector(`#xoxo`);
 
 
 game1.addEventListener(`click`, () => {
@@ -31,6 +33,7 @@ game1.addEventListener(`click`, () => {
     magic.classList.add(`hidden`);
     nickel.classList.add(`hidden`);
     words.classList.add(`hidden`);
+    xoxo.classList.add(`hidden`);
 
     jokempo.classList.remove(`hidden`);
 
@@ -43,6 +46,7 @@ game2.addEventListener(`click`, () => {
     jokempo.classList.add(`hidden`);
     nickel.classList.add(`hidden`);
     words.classList.add(`hidden`);
+    xoxo.classList.add(`hidden`);
 
     magic.classList.remove(`hidden`);
 
@@ -54,6 +58,7 @@ game3.addEventListener(`click`, () => {
     magic.classList.add(`hidden`);
     jokempo.classList.add(`hidden`);
     words.classList.add(`hidden`);
+    xoxo.classList.add(`hidden`);
 
     nickel.classList.remove(`hidden`);
 
@@ -65,12 +70,24 @@ game4.addEventListener(`click`, () => {
     magic.classList.add(`hidden`);
     jokempo.classList.add(`hidden`);
     nickel.classList.add(`hidden`);
+    xoxo.classList.add(`hidden`);
  
     words.classList.remove(`hidden`);
 
     clickCount--;
 });
 
+game5.addEventListener(`click`, () => {
+    menuList.classList.add(`hidden`);
+    magic.classList.add(`hidden`);
+    jokempo.classList.add(`hidden`);
+    nickel.classList.add(`hidden`);
+    words.classList.add(`hidden`);
+
+    xoxo.classList.remove(`hidden`);
+
+    clickCount--;
+});
 
 const rock = document.querySelector(`#rock`);
 const paper = document.querySelector(`#paper`);
@@ -359,7 +376,7 @@ let correctWords = [];
 
 document.onselectionchange = () => {
     let selection = document.getSelection().toString().replace(/\s/g, ``).toLowerCase();
-   
+
     if (word.includes(selection) && !correctWords.includes(selection)) {
         correctWords.push(selection);
     }
@@ -418,3 +435,126 @@ startBtn2.addEventListener(`click`, () => {
     }
   
 });
+
+
+let currentPlayer = 'X';
+let nextPlayer = 'O';
+
+let playerXSelections = [];
+let playerOSelections = [];
+
+const winningCombinations = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [1, 5, 9],
+    [3, 5, 7]
+];
+
+const turn = document.getElementById("turn");
+turn.innerHTML = `É a vez do jogador <span class="highlight">${currentPlayer}</span>`;
+
+let winX = 0;
+let winO = 0;
+let draw = 0;
+
+const results = document.getElementById("results");
+const textX = document.createElement("p");
+const textO = document.createElement("p");
+const textDraw = document.createElement("p");
+
+const handleClick = function(event) {
+    const cell = event.target;
+    cell.style.backgroundColor = "#FFC0BE";
+
+    if (cell.innerHTML == "") {
+        cell.innerHTML = currentPlayer;
+ 
+    if (currentPlayer === 'X' ) {
+        playerSelections = playerXSelections;
+        nextPlayer = 'O';
+        turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
+    } else {
+        playerSelections = playerOSelections;
+        nextPlayer = 'X';
+        turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
+    }
+ 
+    playerSelections.push(Number(cell.id));
+    } else {
+        cell = null;
+    }
+    
+      if (checkWinner(playerSelections)) {
+        alert('Player ' + currentPlayer + ' wins!');
+
+        if (currentPlayer === 'X') {
+            winX++;
+        } else {
+            winO++;
+        }
+
+        resetGame();
+      }
+ 
+      if (checkDraw()) {
+        alert('Draw!');
+
+        draw++;
+
+        resetGame();
+      }
+
+      textX.innerHTML = `Vitórias do jogador <span class="highlight">X</span>: ${winX}`;
+      results.appendChild(textX);
+      textO.innerHTML = `Vitórias do jogador <span class="highlight">O</span>: ${winO}`;
+      results.appendChild(textO);
+      textDraw.innerText = `Empates: ${draw}`;
+      results.appendChild(textDraw);
+ 
+      // Troca jogadores
+      currentPlayer = nextPlayer;
+ }
+
+const cells = document.querySelectorAll('td');
+
+
+for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener('click', handleClick);
+}
+
+function checkWinner() {
+    // Verifica para cada combinação  se o jogador tem todos os valores
+    for (let i = 0; i < winningCombinations.length; i++) {
+        matches = 0;
+        for (let j = 0; j < winningCombinations[i].length; j++) {
+           
+            if (playerSelections.includes(winningCombinations[i][j]))
+                matches++;
+            else
+            break // vai para a próxima combinação
+            if  (matches === 3)
+                return true;
+        }   
+    }
+
+    // Se nós percorremos todas as combinações sem retornar true
+    // então o jogador não venceu
+    return false;
+ }
+
+ function checkDraw() {
+    return (playerOSelections.length + playerXSelections.length) >= cells.length;
+ }
+
+ function resetGame() {
+    playerXSelections = new Array();
+    playerOSelections = new Array();
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].innerHTML = '';
+        cells[i].style.backgroundColor = "var(--bg-color)";
+    }
+ }

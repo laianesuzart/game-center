@@ -40,8 +40,10 @@ body {
     color: red;
 }
 
-.blue {
-    color: var(--secundary-txt-color);
+.highlight {
+    font-size: 1.5rem;
+    color: #FFC0BE;
+    text-shadow: 1px 1px var(--secundary-txt-color);
 }
 
     h1 {
@@ -152,7 +154,7 @@ body {
         box-shadow: 2px 2px var(--secundary-txt-color);
     }
 
-    p#prize, p#timer {
+    p#prize, p#timer, h3 {
         line-height: 1.5;
     }
 
@@ -178,4 +180,42 @@ body {
         padding: 10px;
         text-shadow: 1px 1px #FFC0BE;
         margin-top: 60px;
+    }
+
+    h3 {
+        font-size: 1rem;
+        color: var(--secundary-txt-color);
+        text-shadow: 1px 1px var(--main-txt-color);
+        margin-bottom: 30px;
+    }
+
+    td {
+        border: 1px solid var(--main-txt-color);
+        cursor: pointer;
+        width: 33%;
+        height: 33%;
+        text-align: center;
+        font-size: 2.5rem;
+        transition: all 1s ease-in-out;
+      }
+      
+      td:hover {
+        background: var(--secundary-txt-color);
+      }
+      
+      table {
+        border: 1px solid #FFC0BE;
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+      }
+    
+    div#results {
+        background-color: var(--secundary-txt-color);
+        padding: 5px;
+        margin-top: 20px;
+    }
+    
+    div#results  p {
+        text-shadow: 1px 1px #FFC0BE;
     }
