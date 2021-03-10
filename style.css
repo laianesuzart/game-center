@@ -170,4 +170,12 @@ body {
 
     div#find-words p span::selection {
         color: var(--secundary-txt-color);
-    } 
+    }
+    
+    p#gratz {
+        background-color: var(--secundary-txt-color);
+        line-height: 1.5;
+        padding: 10px;
+        text-shadow: 1px 1px #FFC0BE;
+        margin-top: 60px;
+    }

@@ -349,11 +349,6 @@ const wordGame = () => {
     return array;    
 }
 
-const selectedWords = () => {
-    const selection = document.getSelection().toString();
-
-    return selection;
-}
 
 const startBtn2 = document.querySelector(`#start2`);
 const findWords = document.querySelector(`#find-words`);
@@ -362,31 +357,41 @@ const gratz = document.querySelector(`#gratz`);
 
 let correctWords = [];
 
-
 document.onselectionchange = () => {
     let selection = document.getSelection().toString().replace(/\s/g, ``).toLowerCase();
-    console.log(correctWords)
-    if (word.includes(selection)) {
+   
+    if (word.includes(selection) && !correctWords.includes(selection)) {
         correctWords.push(selection);
     }
+
     if (correctWords.length === 3) {
+        
         setTimeout(() => {
         findWords.classList.add(`hidden`);
         timer.classList.add(`hidden`);
         gratz.classList.remove(`hidden`);
         }, 1000);
-        
+    
         correctWords = [];
     }
 }
 
-const time = counter => {
+let checkTime = 30;
+
+const time = (counter) => {
+    
     if (counter > 0) {
         setTimeout(() => {
             counter--;
             timer.innerHTML = `${counter} segundo(s)`;
             time(counter);
         }, 1000);
+    }  
+    if (counter === 0) {
+        startBtn2.disabled = false;
+        findWords.classList.add(`hidden`);
+        timer.classList.add(`hidden`);
+        gratz.classList.add(`hidden`);
     }
 }
 
@@ -394,13 +399,10 @@ startBtn2.addEventListener(`click`, () => {
     const matrix = wordGame();
     findWords.classList.remove(`hidden`);
     timer.classList.remove(`hidden`);
-    gratz.classList.add(`hidden`);
-    timer.innerHTML = `${30} segundo(s)`;
     startBtn2.disabled = true;
+    timer.innerHTML = `${30} segundo(s)`;
 
-    time(30); 
-
-    const text = [];
+    time(checkTime);
 
     findWords.innerHTML = ``;
 
@@ -414,11 +416,5 @@ startBtn2.addEventListener(`click`, () => {
             rowText.appendChild(columnText);
         }
     }
-
-    setTimeout(() => {
-        startBtn2.disabled = false;
-        findWords.classList.add(`hidden`);
-        timer.classList.add(`hidden`);
-    }, 30000);
   
 });
