@@ -482,14 +482,11 @@ const handleClick = function(event) {
         nextPlayer = 'X';
         turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
     }
- 
-    playerSelections.push(Number(cell.id));
-    } else {
-        cell = null;
+        playerSelections.push(Number(cell.id));
     }
     
       if (checkWinner(playerSelections)) {
-        alert('Player ' + currentPlayer + ' wins!');
+        alert('Jogador ' + currentPlayer + ' venceu!');
 
         if (currentPlayer === 'X') {
             winX++;
@@ -501,7 +498,7 @@ const handleClick = function(event) {
       }
  
       if (checkDraw()) {
-        alert('Draw!');
+        alert('Empate!');
 
         draw++;
 
