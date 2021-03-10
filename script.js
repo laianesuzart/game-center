@@ -350,13 +350,26 @@ const wordGame = () => {
 }
 
 const selectedWords = () => {
-    const selection = window.getSelection().toString();
+    const selection = document.getSelection().toString();
+
     return selection;
 }
 
 const startBtn2 = document.querySelector(`#start2`);
 const findWords = document.querySelector(`#find-words`);
 const timer = document.querySelector(`#timer`);
+
+let correctWords = [];
+
+document.onselectionchange = () => {
+    let selection = document.getSelection().toString().replace(/\s/g, ``).toLowerCase();
+    
+    if (word.includes(selection)) {
+        correctWords.push(selection);
+    }
+}
+
+
 
 const time = counter => {
     if (counter > 0) {
@@ -375,6 +388,9 @@ startBtn2.addEventListener(`click`, () => {
     timer.classList.remove(`hidden`);
     timer.innerHTML = `${30} segundos`;
 
+    time(30); 
+
+    const text = [];
 
     findWords.innerHTML = ``;
 
@@ -385,22 +401,13 @@ startBtn2.addEventListener(`click`, () => {
         }
     }
 
+   selectedWords();
+
     setTimeout(() => {
         startBtn2.classList.remove(`playing`);
         findWords.classList.add(`hidden`);
         timer.classList.add(`hidden`);
     }, 30000);
 
-    if (startBtn2.classList.contains(`playing`)) {
-        time(30);
-       
-        
-            
-        // setInterval( () => {
-        //     const text = selectedWords();
-           
-          
-        
-        // }, 30000);
-    }
+  
 });
