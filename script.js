@@ -121,7 +121,7 @@ const computer = () => {
 const rockPaperScissors = (playerChoice) => {
     const computerChoice = computer();
     
-    result.innerHTML = `O computador escolheu <strong>${choices[computerChoice]}</strong>`;
+    result.innerHTML = `<p>O computador escolheu <strong>${choices[computerChoice]}</strong></p>`;
     
     if (playerChoice === computerChoice) {
         result.innerHTML += `<p>Empate!</p>`;
@@ -436,7 +436,6 @@ startBtn2.addEventListener(`click`, () => {
   
 });
 
-
 let currentPlayer = 'X';
 let nextPlayer = 'O';
 
@@ -478,6 +477,7 @@ const handleClick = function(event) {
         nextPlayer = 'O';
         turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
     } else {
+
         playerSelections = playerOSelections;
         nextPlayer = 'X';
         turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
@@ -511,8 +511,7 @@ const handleClick = function(event) {
       results.appendChild(textO);
       textDraw.innerText = `Empates: ${draw}`;
       results.appendChild(textDraw);
- 
-      // Troca jogadores
+
       currentPlayer = nextPlayer;
  }
 
@@ -524,7 +523,6 @@ for (let i = 0; i < cells.length; i++) {
 }
 
 function checkWinner() {
-    // Verifica para cada combinação  se o jogador tem todos os valores
     for (let i = 0; i < winningCombinations.length; i++) {
         matches = 0;
         for (let j = 0; j < winningCombinations[i].length; j++) {
@@ -532,14 +530,12 @@ function checkWinner() {
             if (playerSelections.includes(winningCombinations[i][j]))
                 matches++;
             else
-            break // vai para a próxima combinação
+            break 
             if  (matches === 3)
                 return true;
         }   
     }
 
-    // Se nós percorremos todas as combinações sem retornar true
-    // então o jogador não venceu
     return false;
  }
 
