@@ -170,6 +170,7 @@ body {
         font-size: 15px;
         cursor: grab;
         text-transform: uppercase;
+        cursor: grabbing;
     }
 
     div#find-words p span::selection {

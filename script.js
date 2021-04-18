@@ -373,6 +373,7 @@ const timer = document.querySelector(`#timer`);
 const gratz = document.querySelector(`#gratz`);
 
 let correctWords = [];
+let timeID = null;
 
 document.onselectionchange = () => {
     let selection = document.getSelection().toString().replace(/\s/g, ``).toLowerCase();
@@ -392,8 +393,6 @@ document.onselectionchange = () => {
         correctWords = [];
     }
 }
-
-let timeID = null;
 
 const setTimer = (counter) => {
     timer.innerHTML = `${counter} segundo(s)`;
@@ -416,6 +415,7 @@ startBtn2.addEventListener(`click`, () => {
     const matrix = wordGame();
     findWords.classList.remove(`hidden`);
     timer.classList.remove(`hidden`);
+    gratz.classList.add(`hidden`);
     
     clearTimeout(timeID);
     setTimer(30);
