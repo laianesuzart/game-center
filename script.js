@@ -393,33 +393,32 @@ document.onselectionchange = () => {
     }
 }
 
-let checkTime = 30;
+let timeID = null;
 
-const time = (counter) => {
-    
-    if (counter > 0) {
-        setTimeout(() => {
-            counter--;
-            timer.innerHTML = `${counter} segundo(s)`;
-            time(counter);
+const setTimer = (counter) => {
+    timer.innerHTML = `${counter} segundo(s)`;
+    timeID = setTimeout(() => {
+                counter--;
+                timer.innerHTML = `${counter} segundo(s)`;
+                setTimer(counter);
         }, 1000);
-    }  
+      
     if (counter === 0) {
-        startBtn2.disabled = false;
         findWords.classList.add(`hidden`);
         timer.classList.add(`hidden`);
         gratz.classList.add(`hidden`);
     }
+
+    return timeID;
 }
 
 startBtn2.addEventListener(`click`, () => {
     const matrix = wordGame();
     findWords.classList.remove(`hidden`);
     timer.classList.remove(`hidden`);
-    startBtn2.disabled = true;
-    timer.innerHTML = `${30} segundo(s)`;
-
-    time(checkTime);
+    
+    clearTimeout(timeID);
+    setTimer(30);
 
     findWords.innerHTML = ``;
 
