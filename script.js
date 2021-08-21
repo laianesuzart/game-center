@@ -3,16 +3,14 @@ const menuList = document.querySelector(`#menu-list`);
 let clickCount = 0;
 
 menu.addEventListener(`click`, () => {
-    
-    if (clickCount === 0) {
-        menuList.classList.remove(`hidden`);
-        clickCount++;
-    } else {
-        menuList.classList.add(`hidden`);
-        clickCount--;
-    }
-    
-})
+  if (clickCount === 0) {
+    menuList.classList.remove(`hidden`);
+    clickCount++;
+  } else {
+    menuList.classList.add(`hidden`);
+    clickCount--;
+  }
+});
 
 const game1 = document.querySelector(`#game1`);
 const game2 = document.querySelector(`#game2`);
@@ -27,66 +25,64 @@ const nickel = document.querySelector(`#nickel`);
 const words = document.querySelector(`#words`);
 const xoxo = document.querySelector(`#xoxo`);
 
-
 game1.addEventListener(`click`, () => {
-    menuList.classList.add(`hidden`);
-    magic.classList.add(`hidden`);
-    nickel.classList.add(`hidden`);
-    words.classList.add(`hidden`);
-    xoxo.classList.add(`hidden`);
+  menuList.classList.add(`hidden`);
+  magic.classList.add(`hidden`);
+  nickel.classList.add(`hidden`);
+  words.classList.add(`hidden`);
+  xoxo.classList.add(`hidden`);
 
-    jokempo.classList.remove(`hidden`);
+  jokempo.classList.remove(`hidden`);
 
-    clickCount--;
- 
+  clickCount--;
 });
 
 game2.addEventListener(`click`, () => {
-    menuList.classList.add(`hidden`);
-    jokempo.classList.add(`hidden`);
-    nickel.classList.add(`hidden`);
-    words.classList.add(`hidden`);
-    xoxo.classList.add(`hidden`);
+  menuList.classList.add(`hidden`);
+  jokempo.classList.add(`hidden`);
+  nickel.classList.add(`hidden`);
+  words.classList.add(`hidden`);
+  xoxo.classList.add(`hidden`);
 
-    magic.classList.remove(`hidden`);
+  magic.classList.remove(`hidden`);
 
-    clickCount--;
+  clickCount--;
 });
 
 game3.addEventListener(`click`, () => {
-    menuList.classList.add(`hidden`);
-    magic.classList.add(`hidden`);
-    jokempo.classList.add(`hidden`);
-    words.classList.add(`hidden`);
-    xoxo.classList.add(`hidden`);
+  menuList.classList.add(`hidden`);
+  magic.classList.add(`hidden`);
+  jokempo.classList.add(`hidden`);
+  words.classList.add(`hidden`);
+  xoxo.classList.add(`hidden`);
 
-    nickel.classList.remove(`hidden`);
+  nickel.classList.remove(`hidden`);
 
-    clickCount--;
+  clickCount--;
 });
 
 game4.addEventListener(`click`, () => {
-    menuList.classList.add(`hidden`);
-    magic.classList.add(`hidden`);
-    jokempo.classList.add(`hidden`);
-    nickel.classList.add(`hidden`);
-    xoxo.classList.add(`hidden`);
- 
-    words.classList.remove(`hidden`);
+  menuList.classList.add(`hidden`);
+  magic.classList.add(`hidden`);
+  jokempo.classList.add(`hidden`);
+  nickel.classList.add(`hidden`);
+  xoxo.classList.add(`hidden`);
 
-    clickCount--;
+  words.classList.remove(`hidden`);
+
+  clickCount--;
 });
 
 game5.addEventListener(`click`, () => {
-    menuList.classList.add(`hidden`);
-    magic.classList.add(`hidden`);
-    jokempo.classList.add(`hidden`);
-    nickel.classList.add(`hidden`);
-    words.classList.add(`hidden`);
+  menuList.classList.add(`hidden`);
+  magic.classList.add(`hidden`);
+  jokempo.classList.add(`hidden`);
+  nickel.classList.add(`hidden`);
+  words.classList.add(`hidden`);
 
-    xoxo.classList.remove(`hidden`);
+  xoxo.classList.remove(`hidden`);
 
-    clickCount--;
+  clickCount--;
 });
 
 const rock = document.querySelector(`#rock`);
@@ -94,70 +90,88 @@ const paper = document.querySelector(`#paper`);
 const scissors = document.querySelector(`#scissors`);
 let playerChoice;
 
-const choices = {1: `Pedra`, 2: `Papel`, 3: `Tesoura`};
+const choices = { 1: `Pedra`, 2: `Papel`, 3: `Tesoura` };
 
 const result = document.querySelector(`#result`);
 
 rock.addEventListener(`click`, () => {
-    playerChoice = 1;
-    rockPaperScissors(playerChoice);
+  playerChoice = 1;
+  rockPaperScissors(playerChoice);
 });
 
 paper.addEventListener(`click`, () => {
-    playerChoice = 2;
-    rockPaperScissors(playerChoice);
+  playerChoice = 2;
+  rockPaperScissors(playerChoice);
 });
 
 scissors.addEventListener(`click`, () => {
-    playerChoice = 3;
-    rockPaperScissors(playerChoice);
+  playerChoice = 3;
+  rockPaperScissors(playerChoice);
 });
 
 const computer = () => {
-    const computerChoice = Math.floor(Math.random() * 3) + 1;
-    return computerChoice;
-}
+  const computerChoice = Math.floor(Math.random() * 3) + 1;
+  return computerChoice;
+};
 
 const rockPaperScissors = (playerChoice) => {
-    const computerChoice = computer();
-    
-    result.innerHTML = `<p>O computador escolheu <strong>${choices[computerChoice]}</strong></p>`;
-    
-    if (playerChoice === computerChoice) {
-        result.innerHTML += `<p>Empate!</p>`;
-    } else if ((playerChoice === 1 && computerChoice === 3) || (playerChoice === 2 && computerChoice === 1) || (playerChoice === 3 && computerChoice === 2)) {
-        result.innerHTML += `<p>Você ganhou! Parabéns :D</p>`
-    } else {
-        result.innerHTML += `<p>Você perdeu :c Tente de novo!</p>`
-    }
-}
+  const computerChoice = computer();
+
+  result.innerHTML = `<p>O computador escolheu <strong>${choices[computerChoice]}</strong></p>`;
+
+  if (playerChoice === computerChoice) {
+    result.innerHTML += `<p>Empate!</p>`;
+  } else if (
+    (playerChoice === 1 && computerChoice === 3) ||
+    (playerChoice === 2 && computerChoice === 1) ||
+    (playerChoice === 3 && computerChoice === 2)
+  ) {
+    result.innerHTML += `<p>Você ganhou! Parabéns :D</p>`;
+  } else {
+    result.innerHTML += `<p>Você perdeu :c Tente de novo!</p>`;
+  }
+};
 
 const magicBall = document.querySelector(`#magic-ball`);
 const answer = document.querySelector(`#answer`);
 
-const answers = {1: `É certo.`, 2: `Foi decidido assim.`, 3: `Sem dúvidas.`, 4: `Sim, com certeza.`, 5: `A meu ver, sim.`, 6: `Provavelmente.`,
-                 7: `Sim.`, 8: `Tudo indica que sim.`, 9: `Pergunte mais tarde.`, 10: `É melhor não te contar agora.`, 11: `Concentre-se e pergunte novamente.`,
-                 12: `Não conte com isso.`, 13: `Minha resposta é não.`, 14: `Minhas fontes dizem não.`, 15: `Muito duvidoso.`};
+const answers = {
+  1: `É certo.`,
+  2: `Foi decidido assim.`,
+  3: `Sem dúvidas.`,
+  4: `Sim, com certeza.`,
+  5: `A meu ver, sim.`,
+  6: `Provavelmente.`,
+  7: `Sim.`,
+  8: `Tudo indica que sim.`,
+  9: `Pergunte mais tarde.`,
+  10: `É melhor não te contar agora.`,
+  11: `Concentre-se e pergunte novamente.`,
+  12: `Não conte com isso.`,
+  13: `Minha resposta é não.`,
+  14: `Minhas fontes dizem não.`,
+  15: `Muito duvidoso.`,
+};
 
 const ballAnswers = () => {
-    const ballAnswer = Math.floor(Math.random() * 15) + 1;
-    return ballAnswer;
-}
+  const ballAnswer = Math.floor(Math.random() * 15) + 1;
+  return ballAnswer;
+};
 
 magicBall.addEventListener(`click`, () => {
-    answer.classList.remove(`green`, `yellow`, `red`);
+  answer.classList.remove(`green`, `yellow`, `red`);
 
-    const ballAnswer = ballAnswers();
+  const ballAnswer = ballAnswers();
 
-    if (ballAnswer < 9) {
-        answer.classList.add(`green`);
-    } else if (ballAnswer < 12) {
-        answer.classList.add(`yellow`);
-    } else {
-        answer.classList.add(`red`);
-    }
+  if (ballAnswer < 9) {
+    answer.classList.add(`green`);
+  } else if (ballAnswer < 12) {
+    answer.classList.add(`yellow`);
+  } else {
+    answer.classList.add(`red`);
+  }
 
-    answer.innerHTML = `${answers[ballAnswer]}`;
+  answer.innerHTML = `${answers[ballAnswer]}`;
 });
 
 const img1 = document.querySelector(`#img1`);
@@ -167,9 +181,9 @@ const startBtn = document.querySelector(`#start`);
 const prize = document.querySelector(`#prize`);
 
 const randomPrize = () => {
-    const img = Math.floor(Math.random() * 8) + 1;
-    return img;
-}
+  const img = Math.floor(Math.random() * 8) + 1;
+  return img;
+};
 
 const prize1 = document.createElement(`img`);
 prize1.src = `./img/bestPrize.png`;
@@ -195,177 +209,203 @@ prize7.src = `./img/timeToRest.png`;
 const prize8 = document.createElement(`img`);
 prize8.src = `./img/unlucky.png`;
 
-const prizes = {1: prize1, 2: prize2, 3: prize3, 4: prize4, 5: prize5, 6: prize6, 7: prize7, 8: prize8};
+const prizes = {
+  1: prize1,
+  2: prize2,
+  3: prize3,
+  4: prize4,
+  5: prize5,
+  6: prize6,
+  7: prize7,
+  8: prize8,
+};
 
 startBtn.addEventListener(`click`, () => {
-    startBtn.disabled = true;
+  startBtn.disabled = true;
 
-    img1.innerHTML = ``;
-    img2.innerHTML = ``;
-    img3.innerHTML = ``;
-    prize.innerHTML = ``;
+  img1.innerHTML = ``;
+  img2.innerHTML = ``;
+  img3.innerHTML = ``;
+  prize.innerHTML = ``;
 
-    const num1 = randomPrize();
-    const num2 = randomPrize();
-    const num3 = randomPrize();
+  const num1 = randomPrize();
+  const num2 = randomPrize();
+  const num3 = randomPrize();
 
-   setTimeout( () => {
-        img1.appendChild(prizes[num1].cloneNode(true));
-   }, 500);
+  setTimeout(() => {
+    img1.appendChild(prizes[num1].cloneNode(true));
+  }, 500);
 
-    setTimeout( () => {
-        img2.appendChild(prizes[num2].cloneNode(true));
-    }, 1000);
+  setTimeout(() => {
+    img2.appendChild(prizes[num2].cloneNode(true));
+  }, 1000);
 
-    setTimeout( () => {
-        img3.appendChild(prizes[num3].cloneNode(true));
-    }, 1500);
+  setTimeout(() => {
+    img3.appendChild(prizes[num3].cloneNode(true));
+  }, 1500);
 
-    setTimeout( () => {
-        if (num1 === 8 && num2 === 8 && num3 === 8) {
-            prize.innerHTML = `Oh não! Mais sorte na próxima vez~`
-        } else if (num1 === num2 && num2 === num3) {
-            prize.innerHTML = `Parabéns! Você ganhou um prêmio *-*`;
-        } else {
-            prize.innerHTML = `Tente novamente, não desista!`;
-        }
-    }, 1600);
+  setTimeout(() => {
+    if (num1 === 8 && num2 === 8 && num3 === 8) {
+      prize.innerHTML = `Oh não! Mais sorte na próxima vez~`;
+    } else if (num1 === num2 && num2 === num3) {
+      prize.innerHTML = `Parabéns! Você ganhou um prêmio *-*`;
+    } else {
+      prize.innerHTML = `Tente novamente, não desista!`;
+    }
+  }, 1600);
 
-    setTimeout( () => {
-        startBtn.disabled = false;
-    }, 1650);
-   
+  setTimeout(() => {
+    startBtn.disabled = false;
+  }, 1650);
 });
 
-const word = [`gato`, `cachorro`, `laranja`, `futebol`, `chocolate`, `zebra`, `manteiga`, `vermelho`, `rosa`, `margarida`,
-                `borboleta`, `batata`, `abacaxi`, `basquete`, `abacate`, `manga`, `queijo`, `alface`, `tomate`, `pizza`];
+const word = [
+  `gato`,
+  `cachorro`,
+  `laranja`,
+  `futebol`,
+  `chocolate`,
+  `zebra`,
+  `manteiga`,
+  `vermelho`,
+  `rosa`,
+  `margarida`,
+  `borboleta`,
+  `batata`,
+  `abacaxi`,
+  `basquete`,
+  `abacate`,
+  `manga`,
+  `queijo`,
+  `alface`,
+  `tomate`,
+  `pizza`,
+];
 
 const randomWord = () => {
-   const randomWord = Math.floor(Math.random() * 20);
-   return randomWord;
-}
+  const randomWord = Math.floor(Math.random() * 20);
+  return randomWord;
+};
 
 const randomWords = () => {
-    const randomWords = [];
+  const randomWords = [];
 
-    let word1;
-    let word2;
-    let word3;
-    
-    do {
-        word1 = word[randomWord()];
-        word2 = word[randomWord()];
-        word3 = word[randomWord()];
+  let word1;
+  let word2;
+  let word3;
 
-    } while (word1 === word2 || word2 === word3 || word1 === word3)
+  do {
+    word1 = word[randomWord()];
+    word2 = word[randomWord()];
+    word3 = word[randomWord()];
+  } while (word1 === word2 || word2 === word3 || word1 === word3);
 
-    randomWords.push(word1);
-    randomWords.push(word2);
-    randomWords.push(word3);
+  randomWords.push(word1);
+  randomWords.push(word2);
+  randomWords.push(word3);
 
-    return randomWords;
-}
+  return randomWords;
+};
 
 const randomPosition = () => {
-    const position = Math.floor(Math.random() * 10);
-    return position;
-}
+  const position = Math.floor(Math.random() * 10);
+  return position;
+};
 
 const randomPositions = () => {
-    const randomPositions = [];
+  const randomPositions = [];
 
-    let position1;
-    let position2;
-    let position3; 
+  let position1;
+  let position2;
+  let position3;
 
-    do {
-        position1 = randomPosition();
-        position2 = randomPosition();
-        position3 = randomPosition();
-    } while (position1 === position2 || position2 === position3 || position1 === position3)
+  do {
+    position1 = randomPosition();
+    position2 = randomPosition();
+    position3 = randomPosition();
+  } while (
+    position1 === position2 ||
+    position2 === position3 ||
+    position1 === position3
+  );
 
-    randomPositions.push(position1);
-    randomPositions.push(position2);
-    randomPositions.push(position3);
+  randomPositions.push(position1);
+  randomPositions.push(position2);
+  randomPositions.push(position3);
 
-    return randomPositions;
-}
+  return randomPositions;
+};
 
 const randomLetters = () => {
-    const alphabet = `abcdefghijklmnopqrstuvwxyz`;
-    const randomLetter = Math.floor(Math.random() * 26);
+  const alphabet = `abcdefghijklmnopqrstuvwxyz`;
+  const randomLetter = Math.floor(Math.random() * 26);
 
-    return alphabet[randomLetter];
-}
+  return alphabet[randomLetter];
+};
 
 const wordGame = () => {
-    const array = [];
-    const selectWords = randomWords();
-    const rowPositions = randomPositions();
-   
-    let word1 = [];
-    let word2 = [];
-    let word3 = [];
+  const array = [];
+  const selectWords = randomWords();
+  const rowPositions = randomPositions();
 
-   let position1 = rowPositions[0];
-   let position2 = rowPositions[1];
-   let position3 = rowPositions[2];
+  let word1 = [];
+  let word2 = [];
+  let word3 = [];
 
-   let indexY1 = 10 - selectWords[0].length;
-   let indexY2 = 10 - selectWords[1].length;
-   let indexY3 = 10 - selectWords[2].length;
+  let position1 = rowPositions[0];
+  let position2 = rowPositions[1];
+  let position3 = rowPositions[2];
 
-   for (let i = 0; i < 10; i++) {
-       if (i < indexY1) {
-        word1[i] = randomLetters();
-       }
-       else {
-           for (let i = 0; i < selectWords[0].length; i++) {
-            word1.push(selectWords[0][i]);
-           }     
-       }
-   } 
+  let indexY1 = 10 - selectWords[0].length;
+  let indexY2 = 10 - selectWords[1].length;
+  let indexY3 = 10 - selectWords[2].length;
 
-   for (let i = 0; i < 10; i++) {
-        if (i < indexY2) {
-        word2[i] = randomLetters();
-        }
-        else {
-            for (let i = 0; i < selectWords[1].length; i++) {
-                word2.push(selectWords[1][i]);
-            }   
-        }
-    } 
-
-    for (let i = 0; i < 10; i++) {
-        if (i < indexY3) {
-        word3[i] = randomLetters();
-        }
-        else {
-            for (let i = 0; i < selectWords[2].length; i++) {
-                word3.push(selectWords[2][i]);
-            }   
-        }
-    } 
-
-    for (let row = 0; row < 10; row++) {
-        array[row] = [];
-        for (let column = 0; column < 10; column++) {
-            if (row === position1) {
-                array[row][column] = word1[column];
-            } else if (row === position2) {
-                array[row][column] = word2[column];
-            } else if (row === position3) {
-                array[row][column] = word3[column];
-            } else {
-                array[row][column] = randomLetters();
-            }
-            
-        }
+  for (let i = 0; i < 10; i++) {
+    if (i < indexY1) {
+      word1[i] = randomLetters();
+    } else {
+      for (let i = 0; i < selectWords[0].length; i++) {
+        word1.push(selectWords[0][i]);
+      }
     }
-    return array;    
-}
+  }
 
+  for (let i = 0; i < 10; i++) {
+    if (i < indexY2) {
+      word2[i] = randomLetters();
+    } else {
+      for (let i = 0; i < selectWords[1].length; i++) {
+        word2.push(selectWords[1][i]);
+      }
+    }
+  }
+
+  for (let i = 0; i < 10; i++) {
+    if (i < indexY3) {
+      word3[i] = randomLetters();
+    } else {
+      for (let i = 0; i < selectWords[2].length; i++) {
+        word3.push(selectWords[2][i]);
+      }
+    }
+  }
+
+  for (let row = 0; row < 10; row++) {
+    array[row] = [];
+    for (let column = 0; column < 10; column++) {
+      if (row === position1) {
+        array[row][column] = word1[column];
+      } else if (row === position2) {
+        array[row][column] = word2[column];
+      } else if (row === position3) {
+        array[row][column] = word3[column];
+      } else {
+        array[row][column] = randomLetters();
+      }
+    }
+  }
+  return array;
+};
 
 const startBtn2 = document.querySelector(`#start2`);
 const findWords = document.querySelector(`#find-words`);
@@ -376,80 +416,82 @@ let correctWords = [];
 let timeID = null;
 
 document.onselectionchange = () => {
-    let selection = document.getSelection().toString().replace(/\s/g, ``).toLowerCase();
+  let selection = document
+    .getSelection()
+    .toString()
+    .replace(/\s/g, ``)
+    .toLowerCase();
 
-    if (word.includes(selection) && !correctWords.includes(selection)) {
-        correctWords.push(selection);
-    }
+  if (word.includes(selection) && !correctWords.includes(selection)) {
+    correctWords.push(selection);
+  }
 
-    if (correctWords.length === 3) {
-        
-        setTimeout(() => {
-        findWords.classList.add(`hidden`);
-        timer.classList.add(`hidden`);
-        gratz.classList.remove(`hidden`);
-        }, 1000);
-    
-        correctWords = [];
-    }
-}
+  if (correctWords.length === 3) {
+    setTimeout(() => {
+      findWords.classList.add(`hidden`);
+      timer.classList.add(`hidden`);
+      gratz.classList.remove(`hidden`);
+    }, 1000);
+
+    correctWords = [];
+  }
+};
 
 const setTimer = (counter) => {
+  timer.innerHTML = `${counter} segundo(s)`;
+  timeID = setTimeout(() => {
+    counter--;
     timer.innerHTML = `${counter} segundo(s)`;
-    timeID = setTimeout(() => {
-                counter--;
-                timer.innerHTML = `${counter} segundo(s)`;
-                setTimer(counter);
-        }, 1000);
-      
-    if (counter === 0) {
-        findWords.classList.add(`hidden`);
-        timer.classList.add(`hidden`);
-        gratz.classList.add(`hidden`);
-    }
+    setTimer(counter);
+  }, 1000);
 
-    return timeID;
-}
+  if (counter === 0) {
+    findWords.classList.add(`hidden`);
+    timer.classList.add(`hidden`);
+    gratz.classList.add(`hidden`);
+  }
+
+  return timeID;
+};
 
 startBtn2.addEventListener(`click`, () => {
-    const matrix = wordGame();
-    findWords.classList.remove(`hidden`);
-    timer.classList.remove(`hidden`);
-    gratz.classList.add(`hidden`);
-    
-    clearTimeout(timeID);
-    setTimer(30);
+  const matrix = wordGame();
+  findWords.classList.remove(`hidden`);
+  timer.classList.remove(`hidden`);
+  gratz.classList.add(`hidden`);
 
-    findWords.innerHTML = ``;
+  clearTimeout(timeID);
+  setTimer(30);
 
-    for (let row = 0; row < matrix.length; row++) {
-        let rowText = document.createElement(`p`);
-        findWords.appendChild(rowText);
+  findWords.innerHTML = ``;
 
-        for (let column = 0; column < matrix[row].length; column++) {
-            let columnText = document.createElement(`span`);
-            columnText.innerHTML += `${matrix[row][column]} `;
-            rowText.appendChild(columnText);
-        }
+  for (let row = 0; row < matrix.length; row++) {
+    let rowText = document.createElement(`p`);
+    findWords.appendChild(rowText);
+
+    for (let column = 0; column < matrix[row].length; column++) {
+      let columnText = document.createElement(`span`);
+      columnText.innerHTML += `${matrix[row][column]} `;
+      rowText.appendChild(columnText);
     }
-  
+  }
 });
 
-let currentPlayer = 'X';
-let nextPlayer = 'O';
+let currentPlayer = "X";
+let nextPlayer = "O";
 
 let playerXSelections = [];
 let playerOSelections = [];
 
 const winningCombinations = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-    [1, 4, 7],
-    [2, 5, 8],
-    [3, 6, 9],
-    [1, 5, 9],
-    [3, 5, 7]
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7],
 ];
 
 const turn = document.getElementById("turn");
@@ -464,89 +506,83 @@ const textX = document.createElement("p");
 const textO = document.createElement("p");
 const textDraw = document.createElement("p");
 
-const handleClick = function(event) {
-    const cell = event.target;
-    cell.style.backgroundColor = "#FFC0BE";
+const handleClick = function (event) {
+  const cell = event.target;
+  cell.style.backgroundColor = "#FFC0BE";
 
-    if (cell.innerHTML == "") {
-        cell.innerHTML = currentPlayer;
- 
-    if (currentPlayer === 'X' ) {
-        playerSelections = playerXSelections;
-        nextPlayer = 'O';
-        turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
+  if (cell.innerHTML == "") {
+    cell.innerHTML = currentPlayer;
+
+    if (currentPlayer === "X") {
+      playerSelections = playerXSelections;
+      nextPlayer = "O";
+      turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
     } else {
-
-        playerSelections = playerOSelections;
-        nextPlayer = 'X';
-        turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
+      playerSelections = playerOSelections;
+      nextPlayer = "X";
+      turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
     }
-        playerSelections.push(Number(cell.id));
+    playerSelections.push(Number(cell.id));
+  }
+
+  if (checkWinner(playerSelections)) {
+    alert("Jogador " + currentPlayer + " venceu!");
+
+    if (currentPlayer === "X") {
+      winX++;
+    } else {
+      winO++;
     }
-    
-      if (checkWinner(playerSelections)) {
-        alert('Jogador ' + currentPlayer + ' venceu!');
 
-        if (currentPlayer === 'X') {
-            winX++;
-        } else {
-            winO++;
-        }
+    resetGame();
+  }
 
-        resetGame();
-      }
- 
-      if (checkDraw()) {
-        alert('Empate!');
+  if (checkDraw()) {
+    alert("Empate!");
 
-        draw++;
+    draw++;
 
-        resetGame();
-      }
+    resetGame();
+  }
 
-      textX.innerHTML = `Vitórias do jogador <span class="highlight">X</span>: ${winX}`;
-      results.appendChild(textX);
-      textO.innerHTML = `Vitórias do jogador <span class="highlight">O</span>: ${winO}`;
-      results.appendChild(textO);
-      textDraw.innerText = `Empates: ${draw}`;
-      results.appendChild(textDraw);
+  textX.innerHTML = `Vitórias do jogador <span class="highlight">X</span>: ${winX}`;
+  results.appendChild(textX);
+  textO.innerHTML = `Vitórias do jogador <span class="highlight">O</span>: ${winO}`;
+  results.appendChild(textO);
+  textDraw.innerText = `Empates: ${draw}`;
+  results.appendChild(textDraw);
 
-      currentPlayer = nextPlayer;
- }
+  currentPlayer = nextPlayer;
+};
 
-const cells = document.querySelectorAll('td');
-
+const cells = document.querySelectorAll("td");
 
 for (let i = 0; i < cells.length; i++) {
-    cells[i].addEventListener('click', handleClick);
+  cells[i].addEventListener("click", handleClick);
 }
 
 function checkWinner() {
-    for (let i = 0; i < winningCombinations.length; i++) {
-        matches = 0;
-        for (let j = 0; j < winningCombinations[i].length; j++) {
-           
-            if (playerSelections.includes(winningCombinations[i][j]))
-                matches++;
-            else
-            break 
-            if  (matches === 3)
-                return true;
-        }   
+  for (let i = 0; i < winningCombinations.length; i++) {
+    matches = 0;
+    for (let j = 0; j < winningCombinations[i].length; j++) {
+      if (playerSelections.includes(winningCombinations[i][j])) matches++;
+      else break;
+      if (matches === 3) return true;
     }
+  }
 
-    return false;
- }
+  return false;
+}
 
- function checkDraw() {
-    return (playerOSelections.length + playerXSelections.length) >= cells.length;
- }
+function checkDraw() {
+  return playerOSelections.length + playerXSelections.length >= cells.length;
+}
 
- function resetGame() {
-    playerXSelections = new Array();
-    playerOSelections = new Array();
-    for (let i = 0; i < cells.length; i++) {
-        cells[i].innerHTML = '';
-        cells[i].style.backgroundColor = "var(--bg-color)";
-    }
- }
+function resetGame() {
+  playerXSelections = new Array();
+  playerOSelections = new Array();
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].innerHTML = "";
+    cells[i].style.backgroundColor = "var(--bg-color)";
+  }
+}

@@ -1,124 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game Center</title>
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/95d5bb57b5.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <script
+      src="https://kit.fontawesome.com/95d5bb57b5.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
     <h1>Selecione um jogo:</h1>
 
     <nav>
-        <span id="menu"><i class="fas fa-gamepad"></i>Escolha</span>
-      
-        <ul id="menu-list" class="hidden">
-            <li> <a href="#" id="game1">Pedra, Papel e Tesoura</a> </li>
-            <li> <a href="#" id="game2">Magic 8-Ball</a> </li>
-            <li> <a href="#" id="game3">Roleta da Sorte</a> </li>
-            <li> <a href="#" id="game4">Caça-Palavras</a> </li>
-            <li> <a href="#" id="game5">Jogo da Velha</a> </li>
-        </ul>
+      <span id="menu"><i class="fas fa-gamepad"></i>Escolha</span>
+
+      <ul id="menu-list" class="hidden">
+        <li><a href="#" id="game1">Pedra, Papel e Tesoura</a></li>
+        <li><a href="#" id="game2">Magic 8-Ball</a></li>
+        <li><a href="#" id="game3">Roleta da Sorte</a></li>
+        <li><a href="#" id="game4">Caça-Palavras</a></li>
+        <li><a href="#" id="game5">Jogo da Velha</a></li>
+      </ul>
     </nav>
 
     <div id="container">
-        <div id="jokempo" class="hidden">
-            <h2>Pedra, Papel e Tesoura</h2>
+      <div id="jokempo" class="hidden flex-column">
+        <h2>Pedra, Papel e Tesoura</h2>
 
-            <ul>
-                <li>
-                    <figure>
-                        <picture>
-                            <source srcset="./img/pedraPC.png" media="(min-width:768px)"> 
-                            <img id="rock" src="./img/pedra.png" alt="Gesto de pedra com a mão">
-                        </picture>
-                        <figcaption class="hidden">Pedra</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <picture>
-                            <source srcset="./img/papelPC.png" media="(min-width:768px)"> 
-                            <img id="paper" src="./img/papel.png" alt="Gesto de papel com a mão">
-                        </picture>
-                        <figcaption class="hidden">Papel</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <picture>
-                            <source srcset="./img/tesouraPC.png" media="(min-width:768px)"> 
-                            <img id="scissors" src="./img/tesoura.png" alt="Gesto de tesoura com a mão">
-                        </picture>
-                        <figcaption class="hidden">Tesoura</figcaption>
-                    </figure>
-                </li>
-            </ul>
-
-            <div id="result"></div>
-
-        </div>
-
-        <div id="magic" class="hidden">
-            <h2>Magic 8-Ball</h2>
-            <p>Pense numa pergunta, clique na bola e descubra a resposta:</p>
+        <ul>
+          <li>
             <figure>
-                <img id="magic-ball" src="./img/ball.png" alt="Magic 8-Ball">
-                <figcaption class="hidden">Bola mágica</figcaption>
+              <picture>
+                <source srcset="./img/pedraPC.png" media="(min-width:768px)" />
+                <img
+                  id="rock"
+                  src="./img/pedra.png"
+                  alt="Gesto de pedra com a mão"
+                />
+              </picture>
+              <figcaption class="hidden">Pedra</figcaption>
             </figure>
-            <p id="answer"></p>
-        </div>
+          </li>
+          <li>
+            <figure>
+              <picture>
+                <source srcset="./img/papelPC.png" media="(min-width:768px)" />
+                <img
+                  id="paper"
+                  src="./img/papel.png"
+                  alt="Gesto de papel com a mão"
+                />
+              </picture>
+              <figcaption class="hidden">Papel</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <picture>
+                <source
+                  srcset="./img/tesouraPC.png"
+                  media="(min-width:768px)"
+                />
+                <img
+                  id="scissors"
+                  src="./img/tesoura.png"
+                  alt="Gesto de tesoura com a mão"
+                />
+              </picture>
+              <figcaption class="hidden">Tesoura</figcaption>
+            </figure>
+          </li>
+        </ul>
 
-        <div id="nickel" class="hidden">
-            <h2>Roleta da Sorte</h2>
+        <div id="result"></div>
+      </div>
 
-            <ul>
-                <li id="img1"></li>
-                <li id="img2"></li>
-                <li id="img3"></li>
-            </ul>
+      <div id="magic" class="hidden flex-column">
+        <h2>Magic 8-Ball</h2>
+        <p>Pense numa pergunta, clique na bola e descubra a resposta:</p>
+        <figure>
+          <img id="magic-ball" src="./img/ball.png" alt="Magic 8-Ball" />
+          <figcaption class="hidden">Bola mágica</figcaption>
+        </figure>
+        <p id="answer"></p>
+      </div>
 
-            <button id="start">Começar</button>
-            <p id="prize"></p>
-        </div>
+      <div id="nickel" class="hidden flex-column">
+        <h2>Roleta da Sorte</h2>
 
-        <div id="words" class="hidden">
-            <h2>Caça-Palavras</h2>
-            <button id="start2">Iniciar</button>
-            <p id="timer"></p>
-            <div id="find-words"></div>
-            <p id="gratz" class="hidden">Você encontrou todas as palavras! Parabéns :D</p>
-        </div>
+        <ul>
+          <li id="img1"></li>
+          <li id="img2"></li>
+          <li id="img3"></li>
+        </ul>
 
-        <div id="xoxo" class="hidden">
-            <h2>Jogo da Velha</h2>
-            <h3 id="turn"></h3>
-            <table>
-                <tr>
-                    <td id="1"></td>
-                    <td id="2"></td>
-                    <td id="3"></td>
-                </tr>
-                <tr>
-                    <td id="4"></td>
-                    <td id="5"></td>
-                    <td id="6"></td>
-                </tr>
-                <tr>
-                    <td id="7"></td>
-                    <td id="8"></td>
-                    <td id="9"></td>
-                </tr>
-            </table>
+        <button id="start">Começar</button>
+        <p id="prize"></p>
+      </div>
 
-            <div id="results"></div>
+      <div id="words" class="hidden flex-column">
+        <h2>Caça-Palavras</h2>
+        <button id="start2">Iniciar</button>
+        <p id="timer"></p>
+        <div id="find-words"></div>
+        <p id="gratz" class="hidden">
+          Você encontrou todas as palavras! Parabéns :D
+        </p>
+      </div>
 
-        </div>
+      <div id="xoxo" class="hidden flex-column">
+        <h2>Jogo da Velha</h2>
+        <h3 id="turn"></h3>
+        <table>
+          <tr>
+            <td id="1"></td>
+            <td id="2"></td>
+            <td id="3"></td>
+          </tr>
+          <tr>
+            <td id="4"></td>
+            <td id="5"></td>
+            <td id="6"></td>
+          </tr>
+          <tr>
+            <td id="7"></td>
+            <td id="8"></td>
+            <td id="9"></td>
+          </tr>
+        </table>
+
+        <div id="results"></div>
+      </div>
     </div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

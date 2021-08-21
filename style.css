@@ -1,273 +1,279 @@
-html, body, div, figure, ul, a {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
+html,
+body,
+div,
+p,
+figure,
+ul,
+a,
+h1,
+h3 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
 :root {
-    --bg-color: #000000;
-    --main-txt-color: #FF82A9;
-    --secundary-txt-color: #7F95D1;
+  --bg-color: #000000;
+  --main-txt-color: #ff82a9;
+  --secundary-txt-color: #7f95d1;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--main-txt-color);
-    text-align: center;
-    padding: 10px 0;
-    font-family: 'Press Start 2P', cursive;
-    cursor: url(./img/cursor.png), auto;
+  background-color: var(--bg-color);
+  color: var(--main-txt-color);
+  text-align: center;
+  padding: 10px 0;
+  font-family: "Press Start 2P", cursive;
+  cursor: url(./img/cursor.png), auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-button, a, td {
-    cursor: url(./img/pointer.png), auto;
+button,
+a,
+td {
+  cursor: url(./img/pointer.png), auto;
 }
 
 ::selection {
-    background-color: #FFC0BE;
+  background-color: #ffc0be;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .green {
-   color: green;
+  color: green;
 }
 
 .yellow {
-    color: yellow;
+  color: yellow;
 }
 
 .red {
-    color: red;
+  color: red;
 }
 
 .highlight {
-    font-size: 1.5rem;
-    color: #FFC0BE;
-    text-shadow: 1px 1px var(--secundary-txt-color);
+  font-size: 1.5rem;
+  color: #ffc0be;
+  text-shadow: 1px 1px var(--secundary-txt-color);
 }
 
-    h1 {
-        text-shadow: 2px 2px #FFC0BE;
-        line-height: 1.5;
-    }
-    nav span#menu {
-        cursor: url(./img/pointer.png), auto;
-    }
-            nav span i.fa-gamepad {
-            font-size: 1.5rem;
-            padding-right: 10px;
-        }
+h1 {
+  text-shadow: 2px 2px #ffc0be;
+  line-height: 1.5;
+}
 
-        nav ul {
-            margin-top: 1rem;
-        }
-            nav ul li {
-                margin-bottom: 0.6rem;
-            }
-                nav ul li a {
-                    font-family: 'Press Start 2P', cursive;
-                    color: var(--secundary-txt-color);
-                    line-height: 1.5;
-                    transition: all 500ms ease-in-out;
-                }
-           
-                nav ul li a:hover {
-                    color: var(--main-txt-color);
-    
-                }
-    #container {
-        margin: 40px auto 0;
-        padding: 0 10px;
-        max-width: 700px;
-    }
-            h2 {
-                color: #FFC0BE;
-                margin-bottom: 40px;
-                text-shadow: 2px 2px var(--main-txt-color);
-                line-height: 1.5;
-            }
-        #jokempo ul {
-            display: flex;
-            justify-content: center;
-        }
-            #jokempo ul li figure {
-                margin: 0 5px;
-            }
-                #jokempo ul li figure img{
-                    cursor: url(./img/pointer.png), auto;
-                    border: 2px solid var(--main-txt-color);
-                    transition: all 500ms ease-in-out;
-                }
+nav span#menu {
+  cursor: url(./img/pointer.png), auto;
+}
+nav span i.fa-gamepad {
+  font-size: 1.5rem;
+  padding-right: 10px;
+}
 
-                #jokempo ul li figure img:hover {
-                    border: 2px solid var(--secundary-txt-color);
-                }
+nav ul {
+  margin-top: 1rem;
+}
+nav ul li {
+  margin-bottom: 0.6rem;
+}
+nav ul li a {
+  font-family: "Press Start 2P", cursive;
+  color: var(--secundary-txt-color);
+  line-height: 1.5;
+  transition: all 500ms ease-in-out;
+}
 
-            #result {
-                margin-top: 30px;
-                line-height: 1.5;
-            }
-        div#magic p {
-            line-height: 1.5;
-            margin-top: 30px;
-        }
-        img#magic-ball {
-            width: 150px;
-            cursor: url(./img/pointer.png), auto;
-            transition: all 500ms ease-in-out;
-        }
+nav ul li a:hover {
+  color: var(--main-txt-color);
+}
+#container {
+  flex-grow: 1;
+  padding: 0 10px;
+  max-width: 2000px;
+}
+h2 {
+  color: #ffc0be;
+  text-shadow: 2px 2px var(--main-txt-color);
+  line-height: 1.5;
+}
+#jokempo ul {
+  display: flex;
+  justify-content: center;
+}
+#jokempo ul li figure {
+  margin: 0 5px;
+}
+#jokempo ul li figure img {
+  cursor: url(./img/pointer.png), auto;
+  border: 2px solid var(--main-txt-color);
+  transition: all 500ms ease-in-out;
+}
 
-        img#magic-ball:hover {
-            transform: rotate(45deg);
-        }
+#jokempo ul li figure img:hover {
+  border: 2px solid var(--secundary-txt-color);
+}
 
-    div#nickel ul {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 40px;
-    } 
-        div#nickel ul li {
-            background-color: #FFC0BE;
-            width: 80px;
-            height: 80px;
-            margin: 0 5px;
-            display: flex;
-            justify-content: center;
-        }
+#result {
+  line-height: 1.5;
+}
+div#magic p {
+  line-height: 1.5;
+}
+img#magic-ball {
+  width: 150px;
+  cursor: url(./img/pointer.png), auto;
+  transition: all 500ms ease-in-out;
+}
 
-    button#start, button#start2 {
-        font-size: 1rem;
-        font-family: 'Press Start 2P', cursive;
-        font-weight: bold;
-        text-shadow: 1px 1px #FFC0BE;
-        background-color: var(--main-txt-color);
-        color: var(--secundary-txt-color);
-        border: none;
-        outline: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        box-shadow: 2px 2px #FFC0BE;
-        margin-bottom: 10px;
-        line-height: 1.5;
-    }
+img#magic-ball:hover {
+  transform: rotate(45deg);
+}
 
-    button#start:hover, button#start2:hover  {
-        box-shadow: 2px 2px var(--secundary-txt-color);
-    }
+div#nickel ul {
+  display: flex;
+  justify-content: center;
+}
+div#nickel ul li {
+  background-color: #ffc0be;
+  width: 80px;
+  height: 80px;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+}
 
-    p#prize, p#timer, h3 {
-        line-height: 1.5;
-    }
+button#start,
+button#start2 {
+  font-size: 1rem;
+  font-family: "Press Start 2P", cursive;
+  font-weight: bold;
+  text-shadow: 1px 1px #ffc0be;
+  background-color: var(--main-txt-color);
+  color: var(--secundary-txt-color);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px #ffc0be;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
 
-    p#timer {
-        text-shadow: 1px 1px #FFC0BE;
-        font-size: 18px;
-        margin: 20px 0;
-    }
+button#start:hover,
+button#start2:hover {
+  box-shadow: 2px 2px var(--secundary-txt-color);
+}
 
-    div#find-words {
-        font-size: 15px;
-        cursor: url(./img/grab.apng), auto;
-        text-transform: uppercase;
-    }
+p#prize,
+p#timer,
+h3 {
+  line-height: 1.5;
+}
 
-    div#find-words p span::selection {
-        color: var(--secundary-txt-color);
-    }
-    
-    p#gratz {
-        background-color: var(--secundary-txt-color);
-        line-height: 1.5;
-        padding: 10px;
-        text-shadow: 1px 1px #FFC0BE;
-        margin: 100px auto 0;
-        max-width: 700px;
-    }
+p#timer {
+  text-shadow: 1px 1px #ffc0be;
+  font-size: 18px;
+}
 
-    h3 {
-        font-size: 1rem;
-        color: var(--secundary-txt-color);
-        text-shadow: 1px 1px var(--main-txt-color);
-        margin-bottom: 30px;
-    }
+div#find-words {
+  font-size: 15px;
+  cursor: url(./img/grab.apng), auto;
+  text-transform: uppercase;
+}
 
-    td {
-        border: 1px solid var(--main-txt-color);
-        width: 33%;
-        height: 33%;
-        text-align: center;
-        font-size: 2.5rem;
-        transition: all 1s ease-in-out;
-      }
-      
-      td:hover {
-        background: var(--secundary-txt-color);
-      }
-      
-      table {
-        border: 1px solid #FFC0BE;
-        width: 300px;
-        height: 300px;
-        margin: 0 auto;
-      }
-    
-    div#results {
-        background-color: var(--secundary-txt-color);
-        max-width: 700px;
-        margin: 20px auto 0;
-    }
-    
-    div#results  p {
-        text-shadow: 1px 1px #FFC0BE;
-        padding: 5px;
-        line-height: 1.5;
-    }
+div#find-words p span::selection {
+  color: var(--secundary-txt-color);
+}
+
+p#gratz {
+  background-color: var(--secundary-txt-color);
+  line-height: 1.5;
+  padding: 10px;
+  text-shadow: 1px 1px #ffc0be;
+  margin: 100px auto 0;
+  max-width: 700px;
+}
+
+h3 {
+  font-size: 1rem;
+  color: var(--secundary-txt-color);
+  text-shadow: 1px 1px var(--main-txt-color);
+}
+
+td {
+  border: 1px solid var(--main-txt-color);
+  width: 33%;
+  height: 33%;
+  text-align: center;
+  font-size: 2.5rem;
+  transition: all 1s ease-in-out;
+}
+
+td:hover {
+  background: var(--secundary-txt-color);
+}
+
+table {
+  border: 1px solid #ffc0be;
+  width: 250px;
+  height: 250px;
+}
+
+div#results {
+  background-color: var(--secundary-txt-color);
+  max-width: 700px;
+}
+
+div#results p {
+  text-shadow: 1px 1px #ffc0be;
+  padding: 5px;
+  line-height: 1.5;
+}
 
 @media screen and (min-width: 768px) {
-    .highlight {
-        font-size: 2rem;
-    }
-    h1 {
-        font-size: 5rem;
-    }
-    h2 {
-        font-size: 2.5rem;
-    }
-    h3 {
-        font-size: 1.8rem;
-    }
-    nav span#menu {
-        display: none;
-    }
-    nav ul#menu-list {
-        margin-top: 60px;
-        display: flex;
-        justify-content: space-evenly;
-    }
-    div#container {
-        max-width: 2000px;
-        margin-top: 80px;
-    }
-    div#container p {
-        font-size: 1.5rem;
-    }
-    div#result, p#prize {
-        margin-top: 60px;
-    }
-    img#magic-ball {
-        margin: 40px 0;
-    }
-    div#nickel ul li {
-        width: 140px;
-        height: 140px;
-    }
-    p#gratz {
-        font-size: 1.8rem;
-        padding: 20px;
-    }
+  .highlight {
+    font-size: 2rem;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  nav span#menu {
+    display: none;
+  }
+  nav ul#menu-list {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  div#container p {
+    font-size: 1.5rem;
+  }
+  div#nickel ul li {
+    width: 140px;
+    height: 140px;
+  }
+  p#gratz {
+    font-size: 1.8rem;
+    padding: 20px;
+  }
 }
