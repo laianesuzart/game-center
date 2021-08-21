@@ -27,6 +27,52 @@ const textX = document.createElement("p");
 const textO = document.createElement("p");
 const textDraw = document.createElement("p");
 
+
+const computerChoice = () => {
+  let cell = Math.floor(Math.random() * 9) + 1;
+
+  while (playerXSelections.includes(cell) || playerOSelections.includes(cell)) {
+    cell = Math.floor(Math.random() * 9) + 1;
+  }
+  document.getElementById(`${cell}`).style.backgroundColor = "#FFC0BE";
+  document.getElementById(`${cell}`).innerHTML = "O"
+  playerOSelections.push(cell)
+
+
+    nextPlayer = "X";
+    turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
+
+    if (checkWinner(playerOSelections)) {
+      alert("Jogador " + currentPlayer + " venceu!");
+  
+      if (currentPlayer === "X") {
+        winX++;
+      } else {
+        winO++;
+      }
+  
+      resetGame();
+    }
+  
+    if (checkDraw()) {
+      alert("Empate!");
+  
+      draw++;
+  
+      resetGame();
+    }
+  
+    textX.innerHTML = `Vitórias do jogador <span class="highlight">X</span>: ${winX}`;
+    results.appendChild(textX);
+    textO.innerHTML = `Vitórias do jogador <span class="highlight">O</span>: ${winO}`;
+    results.appendChild(textO);
+    textDraw.innerText = `Empates: ${draw}`;
+    results.appendChild(textDraw);
+  
+    currentPlayer = nextPlayer;
+  
+}
+
 const handleClick = function (event) {
   const cell = event.target;
   cell.style.backgroundColor = "#FFC0BE";
@@ -35,18 +81,18 @@ const handleClick = function (event) {
     cell.innerHTML = currentPlayer;
 
     if (currentPlayer === "X") {
-      playerSelections = playerXSelections;
+      // playerSelections = playerXSelections;
       nextPlayer = "O";
       turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
-    } else {
-      playerSelections = playerOSelections;
-      nextPlayer = "X";
-      turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
-    }
-    playerSelections.push(Number(cell.id));
+      playerXSelections.push(Number(cell.id));
+
+      setTimeout(() => {
+        computerChoice()
+      }, 1000)
+    } 
   }
 
-  if (checkWinner(playerSelections)) {
+  if (checkWinner(playerXSelections)) {
     alert("Jogador " + currentPlayer + " venceu!");
 
     if (currentPlayer === "X") {
@@ -82,7 +128,7 @@ for (let i = 0; i < cells.length; i++) {
   cells[i].addEventListener("click", handleClick);
 }
 
-function checkWinner() {
+function checkWinner(playerSelections) {
   for (let i = 0; i < winningCombinations.length; i++) {
     matches = 0;
     for (let j = 0; j < winningCombinations[i].length; j++) {
