@@ -16,7 +16,7 @@ const winningCombinations = [
 ];
 
 const turn = document.getElementById("turn");
-turn.innerHTML = `É a vez do jogador <span class="highlight">${currentPlayer}</span>`;
+turn.innerHTML = `É a sua vez`;
 
 let winX = 0;
 let winO = 0;
@@ -27,6 +27,14 @@ const textX = document.createElement("p");
 const textO = document.createElement("p");
 const textDraw = document.createElement("p");
 
+const score = () => {
+  textX.innerHTML = `Vitórias do <span class="highlight">jogador</span>: ${winX}`;
+  results.appendChild(textX);
+  textO.innerHTML = `Vitórias do <span class="highlight">computador</span>: ${winO}`;
+  results.appendChild(textO);
+  textDraw.innerText = `Empates: ${draw}`;
+  results.appendChild(textDraw);
+};
 
 const computerChoice = () => {
   let cell = Math.floor(Math.random() * 9) + 1;
@@ -35,73 +43,14 @@ const computerChoice = () => {
     cell = Math.floor(Math.random() * 9) + 1;
   }
   document.getElementById(`${cell}`).style.backgroundColor = "#FFC0BE";
-  document.getElementById(`${cell}`).innerHTML = "O"
-  playerOSelections.push(cell)
+  document.getElementById(`${cell}`).innerHTML = "O";
+  playerOSelections.push(cell);
 
+  nextPlayer = "X";
+  turn.innerHTML = `É a sua vez`;
 
-    nextPlayer = "X";
-    turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
-
-    if (checkWinner(playerOSelections)) {
-      alert("Jogador " + currentPlayer + " venceu!");
-  
-      if (currentPlayer === "X") {
-        winX++;
-      } else {
-        winO++;
-      }
-  
-      resetGame();
-    }
-  
-    if (checkDraw()) {
-      alert("Empate!");
-  
-      draw++;
-  
-      resetGame();
-    }
-  
-    textX.innerHTML = `Vitórias do jogador <span class="highlight">X</span>: ${winX}`;
-    results.appendChild(textX);
-    textO.innerHTML = `Vitórias do jogador <span class="highlight">O</span>: ${winO}`;
-    results.appendChild(textO);
-    textDraw.innerText = `Empates: ${draw}`;
-    results.appendChild(textDraw);
-  
-    currentPlayer = nextPlayer;
-  
-}
-
-const handleClick = function (event) {
-  const cell = event.target;
-  cell.style.backgroundColor = "#FFC0BE";
-
-  if (cell.innerHTML == "") {
-    cell.innerHTML = currentPlayer;
-
-    if (currentPlayer === "X") {
-      // playerSelections = playerXSelections;
-      nextPlayer = "O";
-      turn.innerHTML = `É a vez do jogador <span class="highlight">${nextPlayer}</span>`;
-      playerXSelections.push(Number(cell.id));
-
-      setTimeout(() => {
-        computerChoice()
-      }, 1000)
-    } 
-  }
-
-  if (checkWinner(playerXSelections)) {
-    alert("Jogador " + currentPlayer + " venceu!");
-
-    if (currentPlayer === "X") {
-      winX++;
-    } else {
-      winO++;
-    }
-
-    resetGame();
+  if (checkWinner(playerOSelections)) {
+    displayWinner(currentPlayer);
   }
 
   if (checkDraw()) {
@@ -112,12 +61,42 @@ const handleClick = function (event) {
     resetGame();
   }
 
-  textX.innerHTML = `Vitórias do jogador <span class="highlight">X</span>: ${winX}`;
-  results.appendChild(textX);
-  textO.innerHTML = `Vitórias do jogador <span class="highlight">O</span>: ${winO}`;
-  results.appendChild(textO);
-  textDraw.innerText = `Empates: ${draw}`;
-  results.appendChild(textDraw);
+  score();
+
+  currentPlayer = nextPlayer;
+};
+
+const handleClick = (event) => {
+  const cell = event.target;
+  cell.style.backgroundColor = "#FFC0BE";
+
+  if (cell.innerHTML == "") {
+    cell.innerHTML = currentPlayer;
+
+    if (currentPlayer === "X") {
+      nextPlayer = "O";
+      turn.innerHTML = `É a vez do computador`;
+      playerXSelections.push(Number(cell.id));
+
+      setTimeout(() => {
+        computerChoice();
+      }, 1000);
+    }
+  }
+
+  if (checkWinner(playerXSelections)) {
+    displayWinner(currentPlayer);
+  }
+
+  if (checkDraw()) {
+    alert("Empate!");
+
+    draw++;
+
+    resetGame();
+  }
+
+  score();
 
   currentPlayer = nextPlayer;
 };
@@ -128,7 +107,7 @@ for (let i = 0; i < cells.length; i++) {
   cells[i].addEventListener("click", handleClick);
 }
 
-function checkWinner(playerSelections) {
+const checkWinner = (playerSelections) => {
   for (let i = 0; i < winningCombinations.length; i++) {
     matches = 0;
     for (let j = 0; j < winningCombinations[i].length; j++) {
@@ -139,17 +118,29 @@ function checkWinner(playerSelections) {
   }
 
   return false;
-}
+};
 
-function checkDraw() {
+const checkDraw = () => {
   return playerOSelections.length + playerXSelections.length >= cells.length;
-}
+};
 
-function resetGame() {
+const resetGame = () => {
   playerXSelections = new Array();
   playerOSelections = new Array();
   for (let i = 0; i < cells.length; i++) {
     cells[i].innerHTML = "";
     cells[i].style.backgroundColor = "var(--bg-color)";
   }
-}
+};
+
+const displayWinner = (player) => {
+  if (player === "X") {
+    winX++;
+  } else {
+    winO++;
+  }
+  setTimeout(() => {
+    alert(`O ${player} venceu!`);
+    resetGame();
+  }, 500);
+};

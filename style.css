@@ -65,7 +65,6 @@ td {
 }
 
 .highlight {
-  font-size: 1.5rem;
   color: #ffc0be;
   text-shadow: 1px 1px var(--secundary-txt-color);
 }
@@ -101,7 +100,6 @@ nav ul li a:hover {
 }
 #container {
   flex-grow: 1;
-  padding: 0 10px;
   margin: 0 auto;
 }
 h2 {
@@ -227,8 +225,13 @@ p#gratz {
   max-width: 700px;
 }
 
+div#xoxo h2 {
+  margin-bottom: 0;
+}
+
 h3 {
   font-size: 1rem;
+  height: 48px;
   color: var(--secundary-txt-color);
   text-shadow: 1px 1px var(--main-txt-color);
 }
@@ -255,6 +258,8 @@ table {
 div#results {
   background-color: var(--secundary-txt-color);
   max-width: 700px;
+  border-radius: 10px;
+  box-shadow: 0 0 4px 4px;
 }
 
 div#results p {
@@ -273,9 +278,6 @@ div#results p {
 }
 
 @media screen and (min-width: 768px) {
-  .highlight {
-    font-size: 2rem;
-  }
   h2 {
     font-size: 2rem;
   }
