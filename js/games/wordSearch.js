@@ -188,6 +188,7 @@ const setTimer = (counter) => {
     findWords.classList.add(`hidden`);
     timer.classList.add(`hidden`);
     gratz.classList.add(`hidden`);
+    clearTimeout(timeID);
   }
 
   return timeID;

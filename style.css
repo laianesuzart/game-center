@@ -195,6 +195,10 @@ h3 {
   line-height: 1.5;
 }
 
+div#words h2 {
+  margin-bottom: 0;
+}
+
 p#timer {
   text-shadow: 1px 1px #ffc0be;
   font-size: 18px;
@@ -204,6 +208,10 @@ div#find-words {
   font-size: 15px;
   cursor: url(./img/grab.apng), auto;
   text-transform: uppercase;
+}
+
+div#find-words p {
+  padding: 1px 0;
 }
 
 div#find-words p span::selection {
