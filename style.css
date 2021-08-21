@@ -161,11 +161,11 @@ div#nickel ul li {
   overflow: hidden;
 }
 div#nickel ul li img {
-    object-fit: contain;
+  object-fit: contain;
 }
 
 .spin {
-    animation: spin 300ms linear forwards;
+  animation: spin 300ms linear forwards;
 }
 
 button#start,
@@ -256,11 +256,13 @@ div#results p {
   line-height: 1.5;
 }
 
-
 @keyframes spin {
-    to {
-        transform: translateY(-100%);
-    }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
 }
 
 @media screen and (min-width: 768px) {
