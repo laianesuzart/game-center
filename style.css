@@ -159,6 +159,7 @@ div#nickel ul li {
   display: flex;
   justify-content: center;
   overflow: hidden;
+  box-shadow: 0 0 4px 2px;
 }
 div#nickel ul li img {
   object-fit: contain;
