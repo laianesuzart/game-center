@@ -139,6 +139,7 @@ div#magic p {
 img#magic-ball {
   width: 150px;
   cursor: url(./img/pointer.png), auto;
+  filter: drop-shadow(0 0 0.5rem rgb(243, 42, 119));
   transition: all 500ms ease-in-out;
 }
 
