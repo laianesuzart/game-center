@@ -245,6 +245,10 @@ td {
   transition: all 1s ease-in-out;
 }
 
+.selected-cell {
+  background-color: #FFC0BE;
+}
+
 td:hover {
   background: var(--secundary-txt-color);
 }

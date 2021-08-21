@@ -42,7 +42,7 @@ const computerChoice = () => {
   while (playerXSelections.includes(cell) || playerOSelections.includes(cell)) {
     cell = Math.floor(Math.random() * 9) + 1;
   }
-  document.getElementById(`${cell}`).style.backgroundColor = "#FFC0BE";
+  document.getElementById(`${cell}`).classList.add("selected-cell");
   document.getElementById(`${cell}`).innerHTML = "O";
   playerOSelections.push(cell);
 
@@ -68,37 +68,35 @@ const computerChoice = () => {
 
 const handleClick = (event) => {
   const cell = event.target;
-  cell.style.backgroundColor = "#FFC0BE";
 
-  if (cell.innerHTML == "") {
+  if (cell.innerHTML == "" && currentPlayer === "X") {
+    cell.classList.add("selected-cell");
     cell.innerHTML = currentPlayer;
 
-    if (currentPlayer === "X") {
-      nextPlayer = "O";
-      turn.innerHTML = `É a vez do computador`;
-      playerXSelections.push(Number(cell.id));
+    nextPlayer = "O";
+    turn.innerHTML = `É a vez do computador`;
+    playerXSelections.push(Number(cell.id));
 
-      setTimeout(() => {
-        computerChoice();
-      }, 1000);
+    setTimeout(() => {
+      computerChoice();
+    }, 1000);
+
+    if (checkWinner(playerXSelections)) {
+      displayWinner(currentPlayer);
     }
+
+    if (checkDraw()) {
+      alert("Empate!");
+
+      draw++;
+
+      resetGame();
+    }
+
+    score();
+
+    currentPlayer = nextPlayer;
   }
-
-  if (checkWinner(playerXSelections)) {
-    displayWinner(currentPlayer);
-  }
-
-  if (checkDraw()) {
-    alert("Empate!");
-
-    draw++;
-
-    resetGame();
-  }
-
-  score();
-
-  currentPlayer = nextPlayer;
 };
 
 const cells = document.querySelectorAll("td");
@@ -129,7 +127,7 @@ const resetGame = () => {
   playerOSelections = new Array();
   for (let i = 0; i < cells.length; i++) {
     cells[i].innerHTML = "";
-    cells[i].style.backgroundColor = "var(--bg-color)";
+    cells[i].classList.remove("selected-cell");
   }
 };
 
@@ -139,8 +137,6 @@ const displayWinner = (player) => {
   } else {
     winO++;
   }
-  setTimeout(() => {
-    alert(`O ${player} venceu!`);
-    resetGame();
-  }, 500);
+  alert(`O ${player} venceu!`);
+  resetGame();
 };
