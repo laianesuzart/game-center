@@ -6,7 +6,7 @@
 [Sobre](#sobre) • [Tecnologias](#tecnologias) • [Layout](#layout) • [Autora](#autora) • [Licença](#licença)
 
 ## Sobre
-A aplicação ainda está em construção, se encontrar algum bug me avise, por favor 😄/
+A aplicação ainda está em construção, se encontrar algum bug me avise, por favor 😄\
 No momento, o projeto conta com cinco jogos simples, sendo que em dois deles (pedra, papel e tesoura e jogo da velha) o jogador desafia o computador. Pretendo refazer o caça-palavras com Canvas para que funcione no mobile e as palavras corretas selecionadas sejam destacadas.
 
 ## Tecnologias
