@@ -158,6 +158,14 @@ div#nickel ul li {
   margin: 0 5px;
   display: flex;
   justify-content: center;
+  overflow: hidden;
+}
+div#nickel ul li img {
+    object-fit: contain;
+}
+
+.spin {
+    animation: spin 300ms linear forwards;
 }
 
 button#start,
@@ -246,6 +254,13 @@ div#results p {
   text-shadow: 1px 1px #ffc0be;
   padding: 5px;
   line-height: 1.5;
+}
+
+
+@keyframes spin {
+    to {
+        transform: translateY(-100%);
+    }
 }
 
 @media screen and (min-width: 768px) {
