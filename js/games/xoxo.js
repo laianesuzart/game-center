@@ -22,7 +22,11 @@ let winX = 0;
 let winO = 0;
 let draw = 0;
 
+const cells = document.querySelectorAll("td");
 const results = document.getElementById("results");
+const modal = document.getElementById("modal");
+const modalMessage = document.getElementById("message");
+const closeBtn = document.getElementById("close");
 const textX = document.createElement("p");
 const textO = document.createElement("p");
 const textDraw = document.createElement("p");
@@ -43,7 +47,7 @@ const computerChoice = () => {
     cell = Math.floor(Math.random() * 9) + 1;
   }
   document.getElementById(`${cell}`).classList.add("selected-cell");
-  document.getElementById(`${cell}`).innerHTML = "O";
+  document.getElementById(`${cell}`).innerHTML = currentPlayer;
   playerOSelections.push(cell);
 
   nextPlayer = "X";
@@ -54,14 +58,8 @@ const computerChoice = () => {
   }
 
   if (checkDraw()) {
-    alert("Empate!");
-
-    draw++;
-
-    resetGame();
+    displayDraw();
   }
-
-  score();
 
   currentPlayer = nextPlayer;
 };
@@ -86,24 +84,20 @@ const handleClick = (event) => {
     }
 
     if (checkDraw()) {
-      alert("Empate!");
-
-      draw++;
-
-      resetGame();
+      displayDraw();
     }
-
-    score();
 
     currentPlayer = nextPlayer;
   }
 };
 
-const cells = document.querySelectorAll("td");
-
 for (let i = 0; i < cells.length; i++) {
   cells[i].addEventListener("click", handleClick);
 }
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
 
 const checkWinner = (playerSelections) => {
   for (let i = 0; i < winningCombinations.length; i++) {
@@ -132,11 +126,24 @@ const resetGame = () => {
 };
 
 const displayWinner = (player) => {
+  let message = "";
   if (player === "X") {
+    message = "Você venceu! :D";
     winX++;
   } else {
+    message = "O computador venceu!";
     winO++;
   }
-  alert(`O ${player} venceu!`);
+  score();
+  modalMessage.innerHTML = message;
+  modal.classList.remove("hidden");
+  resetGame();
+};
+
+const displayDraw = () => {
+  draw++;
+  score();
+  modalMessage.innerHTML = "Empate!";
+  modal.classList.remove("hidden");
   resetGame();
 };
