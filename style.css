@@ -24,7 +24,6 @@ body {
   background-color: var(--bg-color);
   color: var(--main-txt-color);
   text-align: center;
-  padding: 10px 0;
   font-family: "Press Start 2P", cursive;
   cursor: url(./img/cursor.png), auto;
   height: 100vh;
@@ -103,7 +102,7 @@ nav ul li a:hover {
 #container {
   flex-grow: 1;
   padding: 0 10px;
-  max-width: 2000px;
+  margin: 0 auto;
 }
 h2 {
   color: #ffc0be;
@@ -113,9 +112,7 @@ h2 {
 #jokempo ul {
   display: flex;
   justify-content: center;
-}
-#jokempo ul li figure {
-  margin: 0 5px;
+  gap: 6px;
 }
 #jokempo ul li figure img {
   height: 64px;
@@ -150,18 +147,20 @@ img#magic-ball:hover {
 div#nickel ul {
   display: flex;
   justify-content: center;
+  gap: 12px;
 }
 div#nickel ul li {
   background-color: #ffc0be;
   width: 80px;
   height: 80px;
-  margin: 0 5px;
   display: flex;
   justify-content: center;
   overflow: hidden;
   box-shadow: 0 0 4px 2px;
 }
 div#nickel ul li img {
+  height: 100%;
+  width: 100%;
   object-fit: contain;
 }
 
@@ -182,7 +181,6 @@ button#start2 {
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 2px 2px #ffc0be;
-  margin-bottom: 10px;
   line-height: 1.5;
 }
 
@@ -270,9 +268,6 @@ div#results p {
   .highlight {
     font-size: 2rem;
   }
-  h1 {
-    font-size: 4rem;
-  }
   h2 {
     font-size: 2rem;
   }
@@ -283,7 +278,7 @@ div#results p {
     display: none;
   }
   nav ul#menu-list {
-    margin-top: 60px;
+    margin-top: 40px;
     display: flex;
     justify-content: space-evenly;
   }
@@ -301,5 +296,11 @@ div#results p {
   p#gratz {
     font-size: 1.8rem;
     padding: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: 3.5rem;
   }
 }
